@@ -1,0 +1,6 @@
+{
+  "name": "Mầm Xanh Trí Tuệ",
+  "description": "Đặc quyền học bổng Superbrain dành riêng cho con em tài xế Xanh SM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
