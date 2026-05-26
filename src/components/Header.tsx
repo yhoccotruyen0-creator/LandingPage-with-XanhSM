@@ -43,21 +43,21 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
         <nav className="hidden items-center gap-8 lg:flex">
           <button 
             onClick={() => onScrollToSection('loi-ich')}
-            className="font-headline text-sm font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
+            className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
           >
             Lợi ích chiến dịch
           </button>
           
           <button 
             onClick={() => onScrollToSection('dia-diem')}
-            className="font-headline text-sm font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
+            className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
           >
             Tra cứu 21 cơ sở
           </button>
 
           <button
             onClick={onOpenHistory}
-            className="relative font-headline text-sm font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
+            className="relative font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
           >
             Mã ưu đãi của tôi
             {registrationCount > 0 && (

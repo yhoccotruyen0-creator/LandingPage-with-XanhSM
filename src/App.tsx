@@ -108,8 +108,7 @@ export default function App() {
         {/* Decorative Brand Announcement Header bar */}
         <div className="bg-[#eefbf4] px-4 pt-6 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl rounded-2xl border-2 border-[#72b88d] bg-white/80 px-5 py-4 text-center shadow-sm sm:px-8">
-            <p className="font-headline text-base font-bold leading-snug text-[#171717] sm:text-lg lg:text-xl">
-              <span className="font-extrabold text-[#148144]">Đồng hành đặc quyền:</span> Hội sở Superbrain & Tập đoàn Xanh SM Việt Nam
+            <p className="font-headline text-xl font-bold leading-snug text-[#171717] sm:text-2xl lg:text-3xl">            
               <span className="block pt-1">
                 Đặc quyền dành riêng cho <span className="font-extrabold text-[#148144]">bác tài Xanh Green SM!</span>
               </span>
