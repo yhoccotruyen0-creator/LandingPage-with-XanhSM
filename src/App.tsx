@@ -17,6 +17,7 @@ export default function App() {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [centers, setCenters] = useState<SuperbrainCenter[]>([]);
   const [centersLoadError, setCentersLoadError] = useState('');
+  const [isLoadingCenters, setIsLoadingCenters] = useState(true);
   const [preselectedCenter, setPreselectedCenter] = useState<SuperbrainCenter | null>(null);
   
   // Modals status triggers
@@ -52,6 +53,11 @@ export default function App() {
         console.error('Failed to load centers from Google Sheet', error);
         if (!ignore) {
           setCentersLoadError(error instanceof Error ? error.message : 'Không kết nối được Google Sheet.');
+        }
+      })
+      .finally(() => {
+        if (!ignore) {
+          setIsLoadingCenters(false);
         }
       });
 
@@ -167,7 +173,7 @@ export default function App() {
           />
 
           {/* 5. Horizontal filterable school search terminal */}
-          <CenterFinder centers={centers} loadError={centersLoadError} onSelectCenterToRegister={handleSelectCenterToRegister} />
+          <CenterFinder centers={centers} isLoading={isLoadingCenters} loadError={centersLoadError} onSelectCenterToRegister={handleSelectCenterToRegister} />
 
           {/* 6. Stateful forms inputs mapping */}
           <RegistrationSection
