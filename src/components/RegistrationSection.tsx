@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Info, CheckCircle, Phone, ArrowRight, User, Baby, HelpCircle } from 'lucide-react';
 import { SuperbrainCenter, Registration } from '../types';
-import { SUPERBRAIN_CENTERS, PROVINCES, AGE_GROUPS } from '../data';
 import { motion } from 'motion/react';
 
+const AGE_GROUPS = [
+  "3 - 5 tuổi",
+  "6 - 8 tuổi",
+  "9 - 12 tuổi"
+];
+
 interface RegistrationSectionProps {
+  centers: SuperbrainCenter[];
   preselectedCenter: SuperbrainCenter | null;
-  onRegisterSuccess: (registrationData: Omit<Registration, 'id' | 'timestamp' | 'status'>) => void;
+  onRegisterSuccess: (registrationData: Omit<Registration, 'id' | 'timestamp' | 'status'>) => void | Promise<void>;
   clearPreselection: () => void;
 }
 
 export default function RegistrationSection({
+  centers,
   preselectedCenter,
   onRegisterSuccess,
   clearPreselection
@@ -22,6 +29,12 @@ export default function RegistrationSection({
   const [phoneNumber, setPhoneNumber] = useState('');
   const [province, setProvince] = useState('');
   const [centerId, setCenterId] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  const provinces = React.useMemo(() => {
+    return Array.from(new Set(centers.map(center => center.province).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'vi'));
+  }, [centers]);
 
   // Auto-fill form fields when a center is preselected
   useEffect(() => {
@@ -43,7 +56,7 @@ export default function RegistrationSection({
   }, [preselectedCenter, clearPreselection]);
 
   // Load available centers matching the selected province (excluding 'Tất cả')
-  const availableCentersInProvince = SUPERBRAIN_CENTERS.filter(
+  const availableCentersInProvince = centers.filter(
     center => center.province.toLowerCase() === province.toLowerCase()
   );
 
@@ -78,26 +91,35 @@ export default function RegistrationSection({
     return Object.keys(errors).length === 0;
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+    setSubmitError('');
+    setIsSubmitting(true);
 
     // Retrieve full center name
-    const selectedCenterObj = SUPERBRAIN_CENTERS.find(c => c.id === centerId);
-    
-    onRegisterSuccess({
-      parentName,
-      childName,
-      childAge,
-      phoneNumber,
-      province,
-      centerId,
-      centerName: selectedCenterObj ? selectedCenterObj.name : 'Unknown Center'
-    });
+    const selectedCenterObj = centers.find(c => c.id === centerId);
 
-    // Reset fields except parentName & phoneNumber for user convenience if they register a second child
-    setChildName('');
-    setChildAge('');
+    try {
+      await onRegisterSuccess({
+        parentName,
+        childName,
+        childAge,
+        phoneNumber,
+        province,
+        centerId,
+        centerName: selectedCenterObj ? selectedCenterObj.name : 'Unknown Center'
+      });
+
+      // Reset fields except parentName & phoneNumber for user convenience if they register a second child
+      setChildName('');
+      setChildAge('');
+    } catch (error) {
+      console.error('Registration submit failed', error);
+      setSubmitError('Chưa gửi được đăng ký. Bác tài vui lòng thử lại sau hoặc liên hệ Hotline.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -307,7 +329,7 @@ export default function RegistrationSection({
                 }}
               >
                 <option value="">Chọn Tỉnh / Thành phố...</option>
-                {PROVINCES.filter(p => p !== 'Tất cả').map(p => (
+                {provinces.map(p => (
                   <option key={p} value={p}>{p}</option>
                 ))}
               </select>
@@ -339,7 +361,7 @@ export default function RegistrationSection({
                 </option>
                 {availableCentersInProvince.map(c => (
                   <option key={c.id} value={c.id}>
-                    {c.name} ({c.district})
+                    {c.district ? `${c.name} (${c.district})` : c.name}
                   </option>
                 ))}
               </select>
@@ -352,11 +374,15 @@ export default function RegistrationSection({
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               type="submit"
-              className="w-full bg-primary text-white font-headline text-base sm:text-lg font-bold py-3.5 mt-4 rounded-xl hover:bg-primary-container transition-all shadow-lg shadow-primary/10 flex items-center justify-center gap-2 cursor-pointer"
+              disabled={isSubmitting}
+              className="w-full bg-primary text-white font-headline text-base sm:text-lg font-bold py-3.5 mt-4 rounded-xl hover:bg-primary-container transition-all shadow-lg shadow-primary/10 flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
             >
-              ĐĂNG KÝ NGAY
+              {isSubmitting ? 'ĐANG GỬI...' : 'ĐĂNG KÝ NGAY'}
               <ArrowRight className="h-5 w-5" />
             </motion.button>
+            {submitError && (
+              <p className="text-center text-xs font-bold text-error">{submitError}</p>
+            )}
           </form>
 
         </div>

@@ -5,6 +5,7 @@ export interface SuperbrainCenter {
   district: string;
   address: string;
   hotline: string;
+  email?: string;
   mapUrl?: string;
 }
 

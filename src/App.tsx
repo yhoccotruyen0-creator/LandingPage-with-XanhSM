@@ -11,9 +11,12 @@ import HistoryListModal from './components/HistoryListModal';
 import Footer from './components/Footer';
 import { SuperbrainCenter, Registration } from './types';
 import { motion } from 'motion/react';
+import { fetchCentersFromSheet, submitRegistrationToSheet } from './services/googleSheets';
 
 export default function App() {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
+  const [centers, setCenters] = useState<SuperbrainCenter[]>([]);
+  const [centersLoadError, setCentersLoadError] = useState('');
   const [preselectedCenter, setPreselectedCenter] = useState<SuperbrainCenter | null>(null);
   
   // Modals status triggers
@@ -33,6 +36,30 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => {
+    let ignore = false;
+
+    fetchCentersFromSheet()
+      .then(remoteCenters => {
+        if (!ignore && remoteCenters.length > 0) {
+          setCenters(remoteCenters);
+          setCentersLoadError('');
+        } else if (!ignore) {
+          setCentersLoadError('Google Sheet không trả về cơ sở nào.');
+        }
+      })
+      .catch(error => {
+        console.error('Failed to load centers from Google Sheet', error);
+        if (!ignore) {
+          setCentersLoadError(error instanceof Error ? error.message : 'Không kết nối được Google Sheet.');
+        }
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   // Sync to local storage
   const saveRegistrationsToLocalStorage = (newRegs: Registration[]) => {
     setRegistrations(newRegs);
@@ -44,7 +71,14 @@ export default function App() {
   };
 
   // Create booking slot
-  const handleRegisterSuccess = (formData: Omit<Registration, 'id' | 'timestamp' | 'status'>) => {
+  const handleRegisterSuccess = async (formData: Omit<Registration, 'id' | 'timestamp' | 'status'>) => {
+    const selectedCenter = centers.find(center => center.id === formData.centerId);
+
+    await submitRegistrationToSheet({
+      ...formData,
+      centerEmail: selectedCenter?.email
+    });
+
     const newReg: Registration = {
       ...formData,
       id: `reg-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
@@ -133,10 +167,11 @@ export default function App() {
           />
 
           {/* 5. Horizontal filterable school search terminal */}
-          <CenterFinder onSelectCenterToRegister={handleSelectCenterToRegister} />
+          <CenterFinder centers={centers} loadError={centersLoadError} onSelectCenterToRegister={handleSelectCenterToRegister} />
 
           {/* 6. Stateful forms inputs mapping */}
           <RegistrationSection
+            centers={centers}
             preselectedCenter={preselectedCenter}
             onRegisterSuccess={handleRegisterSuccess}
             clearPreselection={() => setPreselectedCenter(null)}

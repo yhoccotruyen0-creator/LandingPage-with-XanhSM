@@ -1,28 +1,34 @@
 import React, { useState, useMemo } from 'react';
 import { Search, MapPin, Phone, CheckCircle2, ArrowRight } from 'lucide-react';
 import { SuperbrainCenter } from '../types';
-import { SUPERBRAIN_CENTERS, PROVINCES } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface CenterFinderProps {
+  centers: SuperbrainCenter[];
+  loadError?: string;
   onSelectCenterToRegister: (center: SuperbrainCenter) => void;
 }
 
-export default function CenterFinder({ onSelectCenterToRegister }: CenterFinderProps) {
+export default function CenterFinder({ centers, loadError, onSelectCenterToRegister }: CenterFinderProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('Tất cả');
 
+  const provinces = useMemo(() => {
+    const values = Array.from(new Set(centers.map(center => center.province).filter(Boolean)));
+    return ['Tất cả', ...values.sort((a, b) => a.localeCompare(b, 'vi'))];
+  }, [centers]);
+
   // Compute counts dynamically to match specified database constraints
   const provinceCounts = useMemo(() => {
-    const counts: Record<string, number> = { 'Tất cả': SUPERBRAIN_CENTERS.length };
+    const counts: Record<string, number> = { 'Tất cả': centers.length };
     
     // Initialize standard values to ensure labels are present
-    PROVINCES.forEach(p => {
+    provinces.forEach(p => {
       if (p !== 'Tất cả') counts[p] = 0;
     });
 
     // Count
-    SUPERBRAIN_CENTERS.forEach(center => {
+    centers.forEach(center => {
       const p = center.province;
       if (counts[p] !== undefined) {
         counts[p] += 1;
@@ -32,11 +38,11 @@ export default function CenterFinder({ onSelectCenterToRegister }: CenterFinderP
     });
 
     return counts;
-  }, []);
+  }, [centers, provinces]);
 
   // Filter centers based on query and selected province tab
   const filteredCenters = useMemo(() => {
-    return SUPERBRAIN_CENTERS.filter(center => {
+    return centers.filter(center => {
       const matchTab = selectedProvince === 'Tất cả' || center.province.toLowerCase() === selectedProvince.toLowerCase();
       
       const cleanQuery = searchQuery.trim().toLowerCase();
@@ -46,11 +52,12 @@ export default function CenterFinder({ onSelectCenterToRegister }: CenterFinderP
         center.name.toLowerCase().includes(cleanQuery) ||
         center.address.toLowerCase().includes(cleanQuery) ||
         center.district.toLowerCase().includes(cleanQuery) ||
-        center.province.toLowerCase().includes(cleanQuery);
+        center.province.toLowerCase().includes(cleanQuery) ||
+        (center.email || '').toLowerCase().includes(cleanQuery);
 
       return matchTab && matchText;
     });
-  }, [searchQuery, selectedProvince]);
+  }, [centers, searchQuery, selectedProvince]);
 
   // Handle dial call simulation
   const [dialingId, setDialingId] = useState<string | null>(null);
@@ -73,12 +80,17 @@ export default function CenterFinder({ onSelectCenterToRegister }: CenterFinderP
             <MapPin className="h-4 w-4" />
           </div>
           <h2 className="font-headline text-xl md:text-2xl font-bold text-secondary">
-            Hệ thống cơ sở Superbrain đồng hành ({SUPERBRAIN_CENTERS.length} cơ sở)
+            Hệ thống cơ sở Superbrain đồng hành ({centers.length} cơ sở)
           </h2>
         </div>
         <p className="font-sans text-sm sm:text-base text-on-surface-variant font-medium">
           Tìm địa điểm học tập thích hợp gần nhà hoặc vị trí thường di chuyển để tiện việc đưa đón trẻ.
         </p>
+        {loadError && (
+          <p className="rounded-xl border border-error/20 bg-error-container px-4 py-3 text-sm font-bold text-error">
+            Không tải được danh sách cơ sở từ Google Sheet: {loadError}
+          </p>
+        )}
       </div>
 
       {/* Area filter block */}
@@ -109,7 +121,7 @@ export default function CenterFinder({ onSelectCenterToRegister }: CenterFinderP
           
           {/* Scrollable container for chips */}
           <div className="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
-            {PROVINCES.map(prov => {
+            {provinces.map(prov => {
               const count = provinceCounts[prov] || 0;
               const isSelected = selectedProvince.toLowerCase() === prov.toLowerCase();
               return (
@@ -187,7 +199,9 @@ export default function CenterFinder({ onSelectCenterToRegister }: CenterFinderP
                     <div className="flex flex-col gap-2.5 mt-2">
                       <div className="flex items-start gap-2.5 text-sm font-medium text-on-surface-variant">
                         <MapPin className="h-4.5 w-4.5 text-secondary shrink-0 mt-0.5" />
-                        <span className="line-clamp-2 leading-relaxed text-xs sm:text-sm font-semibold">{center.address}</span>
+                        <span className="line-clamp-2 leading-relaxed text-xs sm:text-sm font-semibold">
+                          {center.address || center.email || 'Thông tin địa chỉ sẽ được cập nhật'}
+                        </span>
                       </div>
 
                       <div className="flex items-center gap-2.5 text-sm font-medium text-on-surface-variant">
