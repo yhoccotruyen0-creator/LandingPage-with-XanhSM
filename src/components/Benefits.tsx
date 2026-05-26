@@ -56,7 +56,7 @@ export default function Benefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-5 font-headline text-2xl font-extrabold text-[#2f8e2f] sm:text-3xl"
+          className="mt-5 font-headline text-2xl font-extrabold text-[#148144] sm:text-3xl"
         >
           Khơi Dậy Tiềm Năng Trí Tuệ Cho Con
         </motion.h2>
@@ -66,7 +66,7 @@ export default function Benefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-4 font-sans text-base font-medium leading-relaxed text-on-surface-variant sm:text-lg"
+          className="mt-4 font-sans text-base font-medium leading-relaxed text-[#2f6f3f] sm:text-lg"
         >
           Superbrain tự hào là đơn vị tiên phong sử dụng phương pháp Toán Trí Tuệ <span className="font-extrabold text-[#148144]">(Fingermath & Soroban)</span> <br /> để kích hoạt trọn vẹn cả hai bán cầu não của trẻ từ 3 - 12 tuổi, mang lại sự tự tin vượt trội.
         </motion.p>
@@ -81,7 +81,7 @@ export default function Benefits() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             whileHover={{ scale: 1.01 }}
-            className="flex min-h-36 flex-col items-center justify-center gap-3 border border-[#e8e8ea] bg-white p-5 text-center shadow-[0_10px_24px_rgba(18,91,52,0.08)] transition-all"
+            className="flex min-h-36 flex-col items-center justify-center gap-3 border border-[#dcefe2] bg-white p-5 text-center shadow-[0_10px_24px_rgba(18,91,52,0.08)] transition-all"
           >
             <div className="text-[#c9dc15]">
               {stat.icon}
@@ -89,7 +89,7 @@ export default function Benefits() {
             <p className="font-headline text-xl font-extrabold leading-none text-[#a7cf2a] sm:text-2xl">
               {stat.value}
             </p>
-            <p className="font-sans text-sm font-bold leading-snug text-on-surface-variant">
+            <p className="font-sans text-sm font-bold leading-snug text-[#2f6f3f]">
               {stat.label}
             </p>
           </motion.div>

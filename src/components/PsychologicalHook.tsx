@@ -51,7 +51,7 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#e9f8ed] to-[#d9f2e2] ring-4 ring-[#edf9f1]">
               {card.icon}
             </div>
-            <p className="font-sans text-base font-bold leading-relaxed text-on-surface-variant">
+            <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f]">
               {card.text}
             </p>
           </motion.div>
@@ -78,7 +78,7 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
                 Lời khuyên sư phạm bách khoa
               </span>
             </div>
-            <p className="mt-2 font-sans text-sm font-semibold leading-relaxed text-on-surface-variant sm:text-base">
+            <p className="mt-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
               Được thiết kế để kích thích não bộ phát triển toàn diện, giúp con cải thiện <strong>TẬP TRUNG</strong> - <strong>GHI NHỚ</strong> - <strong>PHẢN XẠ</strong> và <strong>TỰ TIN</strong> hơn mỗi ngày.
             </p>
           </div>
@@ -90,14 +90,14 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-8 flex flex-col items-center justify-center gap-3 rounded-2xl border border-secondary/20 bg-secondary/5 p-4 text-center shadow-sm sm:flex-row"
+        className="mt-8 flex flex-col items-center justify-center gap-3 rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] p-4 text-center shadow-sm sm:flex-row"
       >
-        <p className="font-headline text-sm font-bold text-secondary sm:text-base">
+        <p className="font-headline text-sm font-bold text-[#148144] sm:text-base">
           Ba yên tâm trên mọi cung đường - Superbrain giúp con tự tin mỗi ngày.
         </p>
         <button
           onClick={onRegisterClick}
-          className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-secondary/40 bg-white px-3 py-1.5 font-headline text-xs font-extrabold text-secondary transition-colors hover:bg-secondary hover:text-white"
+          className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-[#148144]/40 bg-white px-3 py-1.5 font-headline text-xs font-extrabold text-[#148144] transition-colors hover:bg-[#148144] hover:text-white"
         >
           Đăng ký ngay
           <ArrowRight className="h-4 w-4" />
