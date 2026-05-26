@@ -12,61 +12,62 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
     <section id="hoc-bong" className="grid grid-cols-1 gap-8 lg:grid-cols-2">
       
       {/* Left Column: List item cards with specific info */}
-      <div className="flex flex-col justify-center rounded-2xl border border-[#e8e8ea] bg-white p-6 sm:p-10 shadow-sm">
-        <div className="flex items-center gap-2.5 text-primary">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-primary shadow-sm shadow-primary/5">
+      <div className="flex flex-col justify-center rounded-2xl border border-[#dcefe2] bg-white px-5 py-4 shadow-sm sm:p-10">
+        <div className="flex items-center gap-2.5 text-[#148144]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144] shadow-sm shadow-[#148144]/5">
             <Gift className="h-5 w-5" />
           </div>
-          <h2 className="font-headline text-xl font-bold">
-            Chi Tiết Học Bổng
+          <h2 className="font-headline text-xl font-extrabold">
+            Chi tiết học bổng “Mầm Xanh Trí Tuệ”
           </h2>
         </div>
 
         <ul className="mt-8 space-y-6">
-          <li className="flex items-start gap-4 border-b border-[#eeeef0] pb-5 last:border-0 last:pb-0">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+          <li className="flex items-start gap-4 border-b border-[#dcefe2] pb-5 last:border-0 last:pb-0">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <Wallet2 className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-secondary">Giá trị</p>
-              <p className="mt-1 font-headline text-base font-extrabold text-[#1a1c1e]">
-                Giảm 1.000.000 VNĐ cho khóa học Bingo đầu tiên.
+              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Giá trị học bổng</p>
+              <p className="mt-1 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
+                Ưu đãi <span className="font-extrabold text-[#148144]">1.000.000 VNĐ</span> học phí khóa học Bingo đầu tiên tại các cơ sở đồng hành Superbrain.
               </p>
             </div>
           </li>
 
-          <li className="flex items-start gap-4 border-b border-[#eeeef0] pb-5 last:border-0 last:pb-0">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+          <li className="flex items-start gap-4 border-b border-[#dcefe2] pb-5 last:border-0 last:pb-0">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <CheckSquare className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-secondary">Điều kiện</p>
-              <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-on-surface-variant leading-relaxed">
-                Xuất trình Thẻ tài xế Xanh SM (vật lý hoặc trên app tài xế) và Voucher của chương trình.
-              </p>
+              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Điều kiện áp dụng</p>
+              <ul className="mt-1 space-y-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
+                <li>Áp dụng cho học viên mới đăng ký, chưa từng học tại Superbrain.</li>
+                <li>Không quy đổi thành tiền mặt và không áp dụng đồng thời các chương trình khác.</li>
+              </ul>
             </div>
           </li>
 
-          <li className="flex items-start gap-4 border-b border-[#eeeef0] pb-5 last:border-0 last:pb-0">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+          <li className="flex items-start gap-4 border-b border-[#dcefe2] pb-5 last:border-0 last:pb-0">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <Calendar className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-secondary">Thời hạn</p>
-              <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-on-surface-variant">
-                Đến hết ngày <span className="font-bold text-primary">31/08/2026</span>.
+              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Thời hạn sử dụng</p>
+              <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-[#2f6f3f]">
+                Đến hết ngày <span className="font-extrabold text-[#148144]">31/08/2026</span>.
               </p>
             </div>
           </li>
 
           <li className="flex items-start gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <MapPin className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-secondary">Địa điểm áp dụng</p>
-              <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-on-surface-variant">
-                Các cơ sở đào tạo của hệ thống Superbrain được tuyển chọn trên toàn quốc.
+              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Địa điểm chấp nhận</p>
+              <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-[#2f6f3f]">
+                Áp dụng đồng bộ tại các cơ sở đồng hành cùng Superbrain.
               </p>
             </div>
           </li>
@@ -74,19 +75,19 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
       </div>
 
       {/* Right Column: CTA box card */}
-      <div className="flex flex-col justify-center items-center text-center rounded-2xl border border-secondary/20 bg-gradient-to-tr from-[#f3f3f6] to-[#f9f9fc] p-6 sm:p-10 shadow-sm">
-        <h3 className="font-headline text-lg sm:text-xl font-bold text-on-surface leading-snug">
-          Đừng bỏ lỡ cơ hội vàng cho tương lai của con em chúng ta!
+      <div className="flex flex-col justify-center items-center text-center rounded-2xl border border-[#dcefe2] bg-gradient-to-tr from-[#effbf4] to-white p-6 shadow-sm sm:p-10">
+        <h3 className="font-headline text-lg sm:text-xl font-extrabold text-[#148144] leading-snug">
+          Hãy tặng món quà tốt nhất cho con ngay hôm nay!
         </h3>
         
-        <p className="mt-3 font-sans text-sm text-on-surface-variant font-medium max-w-sm">
-          Đăng ký lưu giữ suất học bổng ngay hôm nay để nhận mã voucher và quyền ưu tiên đánh giá khả năng tập trung cho bé.
+        <p className="mt-3 font-sans text-sm text-[#2f6f3f] font-medium max-w-sm">
+          Giúp bé khởi dậy sức mạnh trí tuệ, tự tin chinh phục các môn học khác ngoài Toán, nuôi dưỡng thói quen tự giác học tập ngay từ hôm nay.
         </p>
 
         <div className="mt-8 w-full flex flex-col gap-4 max-w-md">
           <button
             onClick={onRegisterClick}
-            className="w-full bg-primary text-white font-headline font-bold text-sm sm:text-base py-4 px-6 rounded-xl hover:bg-primary-container transition-all shadow-md shadow-primary/10 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+            className="w-full bg-[#148144] text-white font-headline font-bold text-sm sm:text-base py-4 px-6 rounded-xl hover:bg-[#0f6f39] transition-all shadow-md shadow-[#148144]/15 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
           >
             ĐĂNG KÝ GIỮ SUẤT HỌC BỔNG 1 TRIỆU CHO CON
             <ArrowRight className="h-5 w-5" />
@@ -94,10 +95,10 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
           
           <button
             onClick={onFinderClick}
-            className="w-full bg-white text-secondary border border-secondary/40 font-headline font-bold text-sm py-3 px-6 rounded-xl hover:bg-secondary/5 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full bg-white text-[#148144] border border-[#148144]/40 font-headline font-bold text-sm py-3 px-6 rounded-xl hover:bg-[#f6fcf2] transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <Map className="h-4 w-4" />
-            XEM DANH SÁCH 71 CƠ SỞ ĐỒNG HÀNH GẦN BẠN NHẤT
+            XEM DANH SÁCH CƠ SỞ ĐỒNG HÀNH GẦN BẠN NHẤT
           </button>
         </div>
       </div>

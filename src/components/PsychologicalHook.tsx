@@ -1,37 +1,40 @@
 import React from 'react';
-import { Smartphone, Brain, Car, Sparkles } from 'lucide-react';
+import { ArrowRight, Brain, Car, HeartHandshake, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 
-export default function PsychologicalHook() {
+interface PsychologicalHookProps {
+  onRegisterClick: () => void;
+}
+
+export default function PsychologicalHook({ onRegisterClick }: PsychologicalHookProps) {
   const cards = [
     {
       id: "pain-card-1",
-      icon: <Smartphone className="h-6 w-6 text-primary" />,
-      text: "Con ở nhà xem điện thoại, tivi quá nhiều, lười tư duy?"
+      icon: <HeartHandshake className="h-6 w-6 text-[#148144]" />,
+      text: "Mong muốn đem điều tốt nhất dành cho con"
     },
     {
       id: "pain-card-2",
-      icon: <Brain className="h-6 w-6 text-primary" />,
+      icon: <Brain className="h-6 w-6 text-[#148144]" />,
       text: "Con kém tập trung, học trước quên sau, sợ môn Toán?"
     },
     {
       id: "pain-card-3",
-      icon: <Car className="h-6 w-6 text-primary" />,
-      text: "Bác tài bận rộn trên những cung đường, không có nhiều thời gian kèm con học?"
+      icon: <Car className="h-6 w-6 text-[#148144]" />,
+      text: "Ba bận rộn, không có thời gian kèm con học mỗi ngày?"
     }
   ];
 
   return (
-    <section className="mx-auto max-w-4xl text-center">
+    <section className="mx-auto max-w-5xl text-center">
       <motion.h2 
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5 }}
-        className="font-headline text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-on-background"
+        className="mx-auto max-w-4xl font-headline text-2xl font-extrabold leading-tight text-on-background sm:text-3xl md:text-4xl"
       >
-        Mỗi chuyến xe Bác tài lăn bánh là một bước lo cho tương lai của con. <br />
-        <span className="text-secondary">Nhưng có bao giờ Bác tài trăn trở...</span>
+        Mỗi chuyến xe bác tài lăn bánh là một lần trăn trở...
       </motion.h2>
 
       <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -43,12 +46,12 @@ export default function PsychologicalHook() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             whileHover={{ y: -4, shadow: "0 10px 25px -5px rgba(0,0,0,0.05)" }}
-            className="flex flex-col items-center gap-4 rounded-2xl border border-[#e8e8ea] bg-white p-6 text-center shadow-sm transition-all"
+            className="flex min-h-48 flex-col items-center justify-center gap-5 rounded-2xl border border-[#e8e8ea] bg-white p-6 text-center shadow-sm transition-all"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-orange-50 to-orange-100/60 ring-4 ring-orange-50/50">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#e9f8ed] to-[#d9f2e2] ring-4 ring-[#edf9f1]">
               {card.icon}
             </div>
-            <p className="font-sans text-sm sm:text-base font-semibold text-on-surface-variant leading-relaxed">
+            <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f]">
               {card.text}
             </p>
           </motion.div>
@@ -56,16 +59,49 @@ export default function PsychologicalHook() {
       </div>
 
       <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mt-8 rounded-2xl border border-[#b9d7b7] bg-[#f5fbef] p-5 text-left shadow-sm"
+      >
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#158a16] text-white shadow-sm">
+            <Sparkles className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="font-headline text-base font-extrabold text-[#137c44]">
+                Chương trình Toán trí tuệ Superbrain
+              </h3>
+              <span className="rounded-full bg-[#e4f3da] px-2.5 py-1 text-xs font-bold text-[#4b8e3a]">
+                Lời khuyên sư phạm bách khoa
+              </span>
+            </div>
+            <p className="mt-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
+              Được thiết kế để kích thích não bộ phát triển toàn diện, giúp con cải thiện <strong>TẬP TRUNG</strong> - <strong>GHI NHỚ</strong> - <strong>PHẢN XẠ</strong> và <strong>TỰ TIN</strong> hơn mỗi ngày.
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-8 flex items-center justify-center gap-2 rounded-2xl border border-secondary/20 bg-secondary/5 p-4 text-center shadow-sm"
+        className="mt-8 flex flex-col items-center justify-center gap-3 rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] p-4 text-center shadow-sm sm:flex-row"
       >
-        <Sparkles className="h-5 w-5 text-secondary shrink-0 animate-bounce" />
-        <p className="font-headline text-sm sm:text-base font-bold text-secondary">
-          👉 Hãy để Superbrain đồng hành cùng Bác tài gánh vác một phần trách nhiệm nuôi dạy con!
+        <p className="font-headline text-sm font-bold text-[#148144] sm:text-base">
+          Ba yên tâm trên mọi cung đường - Superbrain giúp con tự tin mỗi ngày.
         </p>
+        <button
+          onClick={onRegisterClick}
+          className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-[#148144]/40 bg-white px-3 py-1.5 font-headline text-xs font-extrabold text-[#148144] transition-colors hover:bg-[#148144] hover:text-white"
+        >
+          Đăng ký ngay
+          <ArrowRight className="h-4 w-4" />
+        </button>
       </motion.div>
     </section>
   );

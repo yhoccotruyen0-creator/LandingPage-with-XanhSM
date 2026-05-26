@@ -1,42 +1,54 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Target, Zap, Milestone, Award } from 'lucide-react';
+import { BookOpen, Building2, Globe2, GraduationCap, Handshake, Users } from 'lucide-react';
 
 export default function Benefits() {
-  const points = [
+  const stats = [
     {
-      id: "benefit-1",
-      number: "1",
-      icon: <Target className="h-5 w-5 text-white" />,
-      title: "Tập trung tuyệt đối",
-      desc: "Trẻ rèn luyện khả năng tập trung cao độ trong quá trình nghe và tính toán, loại bỏ xao nhãng hiệu quả."
+      id: "stat-1",
+      icon: <GraduationCap className="h-8 w-8" />,
+      value: "15+",
+      label: "Năm hình thành và phát triển"
     },
     {
-      id: "benefit-2",
-      number: "2",
-      icon: <Zap className="h-5 w-5 text-white" />,
-      title: "Ghi nhớ siêu tốc",
-      desc: "Phát triển khả năng phân tích logic và hình dung không gian (visualization) giúp con phản xạ nhạy bén."
+      id: "stat-2",
+      icon: <Handshake className="h-8 w-8" />,
+      value: "160+",
+      label: "Cơ sở trên Toàn quốc"
     },
     {
-      id: "benefit-3",
-      number: "3",
-      icon: <Milestone className="h-5 w-5 text-white" />,
-      title: "Tự tin bứt phá",
-      desc: "Môi trường học tập tuyệt vời theo chuẩn vàng DNA SUPER, khuyến khích trẻ tự tin khám phá, không sợ sai lầm."
+      id: "stat-3",
+      icon: <Users className="h-8 w-8" />,
+      value: "1.000+",
+      label: "Người hướng dẫn"
+    },
+    {
+      id: "stat-4",
+      icon: <Globe2 className="h-8 w-8" />,
+      value: "10.000+",
+      label: "Học viên trong và ngoài nước"
+    },
+    {
+      id: "stat-5",
+      icon: <Building2 className="h-8 w-8" />,
+      value: "460.000+",
+      label: "Trẻ em đã tiếp cận phương pháp"
     }
   ];
 
   return (
-    <section id="loi-ich" className="rounded-2xl border border-[#e8e8ea] bg-white p-6 sm:p-10 lg:p-14 shadow-sm">
-      <div className="mx-auto max-w-2xl text-center">
+    <section id="loi-ich" className="rounded-2xl border border-[#dcefe2] bg-white p-6 shadow-sm sm:p-10 lg:p-14">
+      <div className="mx-auto max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-primary shadow-sm"
+          className="mx-auto inline-flex items-center gap-2 rounded-full bg-[#edf9e9] px-4 py-1.5 text-[#2f8e2f] shadow-sm"
         >
-          <Award className="h-5 w-5" />
+          <BookOpen className="h-4 w-4" />
+          <span className="font-headline text-xs font-extrabold uppercase tracking-wide">
+            Phương pháp Toán trí tuệ độc quyền
+          </span>
         </motion.div>
         
         <motion.h2
@@ -44,9 +56,9 @@ export default function Benefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-4 font-headline text-2xl sm:text-3xl font-bold text-primary"
+          className="mt-5 font-headline text-2xl font-extrabold text-[#148144] sm:text-3xl"
         >
-          Khơi Dậy Tiềm Năng Trí Tuệ
+          Khơi Dậy Tiềm Năng Trí Tuệ Cho Con
         </motion.h2>
         
         <motion.p
@@ -54,34 +66,31 @@ export default function Benefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-3 font-sans text-base sm:text-lg text-on-surface-variant font-medium leading-relaxed"
+          className="mt-4 font-sans text-base font-medium leading-relaxed text-[#2f6f3f] sm:text-lg"
         >
-          Superbrain sử dụng phương pháp Toán Trí Tuệ (Fingermath & Soroban) để kích hoạt đồng thời hai bán cầu não cho trẻ từ <span className="font-bold text-secondary">3 đến 12 tuổi</span>.
+          Superbrain tự hào là đơn vị tiên phong sử dụng phương pháp Toán Trí Tuệ <span className="font-extrabold text-[#148144]">(Fingermath & Soroban)</span> <br /> để kích hoạt trọn vẹn cả hai bán cầu não của trẻ từ 3 - 12 tuổi, mang lại sự tự tin vượt trội.
         </motion.p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-        {points.map((pt, index) => (
+      <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {stats.map((stat, index) => (
           <motion.div
-            key={pt.id}
+            key={stat.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             whileHover={{ scale: 1.01 }}
-            className="flex flex-col gap-4 rounded-xl bg-[#f9f9fc] p-6 border border-[#eeeef0] transition-all"
+            className="flex min-h-36 flex-col items-center justify-center gap-3 border border-[#dcefe2] bg-white p-5 text-center shadow-[0_10px_24px_rgba(18,91,52,0.08)] transition-all"
           >
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary font-headline text-base font-extrabold text-white shadow-sm shadow-primary/20">
-                {pt.number}
-              </div>
-              <h3 className="font-headline text-base sm:text-lg font-bold text-on-surface">
-                {pt.title}
-              </h3>
+            <div className="text-[#c9dc15]">
+              {stat.icon}
             </div>
-            
-            <p className="font-sans text-sm sm:text-base text-on-surface-variant leading-relaxed font-medium">
-              {pt.desc}
+            <p className="font-headline text-xl font-extrabold leading-none text-[#a7cf2a] sm:text-2xl">
+              {stat.value}
+            </p>
+            <p className="font-sans text-sm font-bold leading-snug text-[#2f6f3f]">
+              {stat.label}
             </p>
           </motion.div>
         ))}

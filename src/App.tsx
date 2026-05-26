@@ -11,10 +11,13 @@ import HistoryListModal from './components/HistoryListModal';
 import Footer from './components/Footer';
 import { SuperbrainCenter, Registration } from './types';
 import { motion } from 'motion/react';
-import { HelpCircle, Star, ShieldCheck, Milestone } from 'lucide-react';
+import { fetchCentersFromSheet, submitRegistrationToSheet } from './services/googleSheets';
 
 export default function App() {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
+  const [centers, setCenters] = useState<SuperbrainCenter[]>([]);
+  const [centersLoadError, setCentersLoadError] = useState('');
+  const [isLoadingCenters, setIsLoadingCenters] = useState(true);
   const [preselectedCenter, setPreselectedCenter] = useState<SuperbrainCenter | null>(null);
   
   // Modals status triggers
@@ -34,6 +37,35 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => {
+    let ignore = false;
+
+    fetchCentersFromSheet()
+      .then(remoteCenters => {
+        if (!ignore && remoteCenters.length > 0) {
+          setCenters(remoteCenters);
+          setCentersLoadError('');
+        } else if (!ignore) {
+          setCentersLoadError('Google Sheet không trả về cơ sở nào.');
+        }
+      })
+      .catch(error => {
+        console.error('Failed to load centers from Google Sheet', error);
+        if (!ignore) {
+          setCentersLoadError(error instanceof Error ? error.message : 'Không kết nối được Google Sheet.');
+        }
+      })
+      .finally(() => {
+        if (!ignore) {
+          setIsLoadingCenters(false);
+        }
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   // Sync to local storage
   const saveRegistrationsToLocalStorage = (newRegs: Registration[]) => {
     setRegistrations(newRegs);
@@ -45,7 +77,14 @@ export default function App() {
   };
 
   // Create booking slot
-  const handleRegisterSuccess = (formData: Omit<Registration, 'id' | 'timestamp' | 'status'>) => {
+  const handleRegisterSuccess = async (formData: Omit<Registration, 'id' | 'timestamp' | 'status'>) => {
+    const selectedCenter = centers.find(center => center.id === formData.centerId);
+
+    await submitRegistrationToSheet({
+      ...formData,
+      centerEmail: selectedCenter?.email
+    });
+
     const newReg: Registration = {
       ...formData,
       id: `reg-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
@@ -104,52 +143,46 @@ export default function App() {
       />
 
       {/* Main landing segments layout container */}
-      <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col gap-12 sm:gap-16 lg:gap-20">
+      <main className="flex-grow w-full">
         
         {/* Decorative Brand Announcement Header bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border border-secondary/20 bg-secondary/5 rounded-2xl shadow-sm text-center sm:text-left">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-3.5 w-3.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-secondary"></span>
-            </span>
-            <p className="font-headline text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">
-              Chương trình Học bổng đặc quyền phát sóng toàn quốc năm học 2026!
+        <div className="bg-[#eefbf4] px-4 pt-6 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl rounded-2xl border-2 border-[#72b88d] bg-white/80 px-5 py-4 text-center shadow-sm sm:px-8">
+            <p className="font-headline text-xl font-bold leading-snug text-[#171717] sm:text-2xl lg:text-3xl">            
+              <span className="block pt-1">
+                Đặc quyền dành riêng cho <span className="font-extrabold text-[#148144]">bác tài Xanh Green SM!</span>
+              </span>
             </p>
           </div>
-          <button
-            onClick={() => handleScrollToSection('hoc-bong')}
-            className="text-xs font-bold text-primary hover:underline cursor-pointer font-headline flex items-center gap-1 shrink-0"
-          >
-            Tìm hiểu chính sách đóng góp
-            <span>→</span>
-          </button>
         </div>
 
         {/* 1. Hero Segment */}
         <Hero onRegisterClick={() => handleScrollToSection('dang-ky')} />
 
-        {/* 2. Customer pain hook questions */}
-        <PsychologicalHook />
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-8 sm:gap-16 sm:px-6 md:py-12 lg:gap-20 lg:px-8">
+          {/* 2. Customer pain hook questions */}
+          <PsychologicalHook onRegisterClick={() => handleScrollToSection('dang-ky')} />
 
-        {/* 3. Method Cognitive Benefits values cards */}
-        <Benefits />
+          {/* 3. Method Cognitive Benefits values cards */}
+          <Benefits />
 
-        {/* 4. Scholarship criteria overview & CTA buttons */}
-        <ScholarshipDetails 
-          onRegisterClick={() => handleScrollToSection('dang-ky')} 
-          onFinderClick={() => handleScrollToSection('dia-diem')} 
-        />
+          {/* 4. Scholarship criteria overview & CTA buttons */}
+          <ScholarshipDetails 
+            onRegisterClick={() => handleScrollToSection('dang-ky')} 
+            onFinderClick={() => handleScrollToSection('dia-diem')} 
+          />
 
-        {/* 5. Horizontal filterable school search terminal */}
-        <CenterFinder onSelectCenterToRegister={handleSelectCenterToRegister} />
+          {/* 5. Horizontal filterable school search terminal */}
+          <CenterFinder centers={centers} isLoading={isLoadingCenters} loadError={centersLoadError} onSelectCenterToRegister={handleSelectCenterToRegister} />
 
-        {/* 6. Stateful forms inputs mapping */}
-        <RegistrationSection
-          preselectedCenter={preselectedCenter}
-          onRegisterSuccess={handleRegisterSuccess}
-          clearPreselection={() => setPreselectedCenter(null)}
-        />
+          {/* 6. Stateful forms inputs mapping */}
+          <RegistrationSection
+            centers={centers}
+            preselectedCenter={preselectedCenter}
+            onRegisterSuccess={handleRegisterSuccess}
+            clearPreselection={() => setPreselectedCenter(null)}
+          />
+        </div>
 
       </main>
 

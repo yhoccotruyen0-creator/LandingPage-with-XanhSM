@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { AlertTriangle, Gift, Clock, Sparkles } from 'lucide-react';
+import { CheckCircle2, Clock, Play } from 'lucide-react';
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -8,20 +8,23 @@ interface HeroProps {
 
 export default function Hero({ onRegisterClick }: HeroProps) {
   return (
-    <section id="hero" className="relative overflow-hidden rounded-2xl border border-[#e8e8ea] bg-white shadow-lg">
-      <div className="flex flex-col lg:flex-row items-stretch">
+    <section id="hero" className="relative overflow-hidden bg-[#effbf4]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(91,190,111,0.18),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(253,208,64,0.16),transparent_24%),linear-gradient(180deg,#f6fff9_0%,#eaf8f0_100%)]" />
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-10 px-4 pb-10 pt-8 sm:px-6 lg:flex-row lg:items-center lg:gap-10 lg:px-8 lg:pb-14 lg:pt-10">
         
         {/* Left Column: Core Promo Content */}
-        <div className="flex flex-col justify-center p-6 sm:p-10 lg:w-1/2 lg:p-14">
+        <div className="flex flex-col justify-center lg:w-[45%]">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 rounded-full bg-secondary-container/10 px-3 py-1 w-fit border border-secondary/20"
+            className="flex w-fit items-center gap-2 rounded-full border border-[#79bc8c] bg-white/60 px-3.5 py-1.5 shadow-sm"
           >
-            <Sparkles className="h-4 w-4 text-secondary animate-pulse" />
-            <span className="font-headline text-xs font-bold text-secondary tracking-wide uppercase">
-              Hợp Tác Độc Quyền
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#69b878] text-white">
+              <CheckCircle2 className="h-4 w-4" />
+            </span>
+            <span className="font-headline text-xs font-extrabold tracking-wide text-[#137c44] uppercase sm:text-sm">
+              Chương trình Tết thiếu nhi
             </span>
           </motion.div>
 
@@ -29,19 +32,19 @@ export default function Hero({ onRegisterClick }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-4 font-headline text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight text-primary uppercase"
+            className="mt-7 font-headline text-3xl font-extrabold leading-tight tracking-tight text-[#11823d] sm:text-4xl lg:text-5xl"
           >
-            Đặc Quyền Trân Quý <br />
-            <span className="text-secondary">— Dành Riêng Cho Gia Đình Bác Tài Xanh SM!</span>
+            Voucher
+            <span className="mt-1 block uppercase">Mầm Xanh Trí Tuệ</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 font-sans text-base sm:text-lg leading-relaxed text-on-surface-variant font-medium"
+            className="mt-5 max-w-2xl font-sans text-base font-semibold leading-relaxed text-[#151515] sm:text-lg lg:text-xl"
           >
-            Hội sở Superbrain Việt Nam tài trợ Học bổng đặc quyền <strong className="text-primary font-bold">"Mầm Xanh Trí Tuệ"</strong> trị giá <span className="inline-block rounded-lg bg-orange-100 px-2.5 py-0.5 font-headline font-extrabold text-primary border border-primary/20 shadow-sm">1.000.000 VNĐ</span> áp dụng ngay cho Khóa học Bingo đầu tiên của con.
+            Superbrain Vietnam dành tặng học bổng <strong className="font-extrabold">"Mầm Xanh Trí Tuệ" trị giá 1.000.000đ</strong> cho con em bác tài Xanh Green SM khi tham gia khóa học Bingo đầu tiên
           </motion.p>
           
           {/* Urgent Warning banner */}
@@ -49,51 +52,56 @@ export default function Hero({ onRegisterClick }: HeroProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex items-start gap-3 rounded-xl border border-error/20 bg-error-container p-4 dark:bg-error-container/80 shadow-inner"
+            className="mt-6 flex w-full max-w-2xl items-center gap-3 rounded-lg bg-[#ffe0e3] px-4 py-3 text-[#6d171c] shadow-sm"
           >
-            <div className="flex bg-white text-error p-1.5 rounded-lg border border-error/10 shadow-sm shrink-0">
-              <AlertTriangle className="h-5 w-5 text-error" />
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-[#c83d55] text-[#c83d55]">
+              <Clock className="h-5 w-5" />
             </div>
-            <div>
-              <p className="font-headline text-sm font-bold text-[#93000a] flex items-center gap-1.5 uppercase tracking-wide">
-                <span>🚨 SỐ LƯỢNG HỮU HẠN:</span>
-              </p>
-              <p className="mt-1 font-sans text-xs sm:text-sm leading-relaxed text-[#93000a] font-semibold">
-                Chỉ áp dụng tối đa <span className="font-extrabold underline">20 suất/năm</span> trên toàn hệ thống 100 cơ sở! Ai đăng ký trước giữ chỗ trước!
-              </p>
-            </div>
+            <p className="font-headline text-sm font-extrabold leading-tight sm:text-base">
+              Số lượng có hạn - đăng ký giữ chỗ ngay hôm nay
+            </p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 flex flex-col sm:flex-row gap-3.5"
+            className="mt-6 flex flex-col gap-3.5 sm:flex-row"
           >
             <button
               onClick={onRegisterClick}
-              className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-primary-container hover:from-primary-container hover:to-primary text-white font-headline font-bold text-sm sm:text-base px-6 py-3.5 shadow-lg shadow-primary/20 transition-all active:scale-[0.98] cursor-pointer"
+              className="flex items-center justify-center gap-2 rounded-lg bg-[#14934f] px-6 py-3 font-headline text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(20,147,79,0.22)] transition-all hover:bg-[#0f7f42] active:scale-[0.98] cursor-pointer"
             >
-              <Gift className="h-5 w-5" />
-              Đăng Ký Nhận Học Bổng Ngay
+              Đăng ký giữ chỗ
             </button>
           </motion.div>
         </div>
 
         {/* Right Column: Imagery with nice overlay text or gradient shape */}
-        <div className="relative min-h-[320px] sm:min-h-[400px] lg:w-1/2 bg-[#f3f3f6] overflow-hidden">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF3uG_K8whNN44wLVOZz99gZx297ptFA9N7BIHRYIpw96VaojehIFbeQiAcdpc_IhqFq2_v7sXb-R7rhw_flvxgVqU46PwV478tHUx00iN3LpKjucN554Q-91VFgeCBSkF28E19rbqrtPsZJ3ZV80gXDqND1KyZMzz2ZOcddU45zqvAMa7l1PVyOYDPEehS-6XsI75wwpe27kl8G2FWM5wSd-nwCcg6IKfjHRXRbsv1ENyFswq_Fbg-eidPG9JmjGNPduyXMJzG10"
-            alt="Xanh SM driver with a happy smiling child"
-            className="absolute inset-0 h-full w-full object-cover object-center"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-white/10 lg:to-transparent"></div>
-          
-          {/* Subtle Float Tag */}
-          <div className="absolute bottom-4 right-4 rounded-xl bg-black/60 backdrop-blur-sm px-3 py-2 text-white border border-white/20">
-            <p className="font-sans text-[10px] font-bold tracking-wider uppercase opacity-80">Đồng Hành Phát Triển</p>
-            <p className="font-headline text-xs font-semibold">Superbrain & Xanh SM</p>
+        <div className="relative lg:w-[55%]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border-[10px] border-white bg-[#dff4e6] shadow-[0_24px_42px_rgba(27,96,52,0.22)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,#108848_0_8%,transparent_20%),radial-gradient(circle_at_84%_18%,#e4df48_0_9%,transparent_20%),radial-gradient(circle_at_50%_48%,#8bd234_0_20%,transparent_34%),radial-gradient(circle_at_18%_78%,#ffd45d_0_8%,transparent_19%),linear-gradient(135deg,#e9fff0_0%,#fbfff7_45%,#b6e061_100%)]" />
+            <div className="absolute inset-x-[18%] top-[28%] h-[18%] rounded-full bg-[#43aa3d]/70 blur-sm" />
+            <div className="absolute inset-x-[31%] top-[50%] h-[16%] rounded-full bg-[#b4bf24]/80 blur-sm" />
+            <button
+              type="button"
+              aria-label="Phát video giới thiệu"
+              className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-lg bg-[#ffd923] px-4 py-2 font-headline text-2xl font-extrabold text-[#171717] shadow-lg transition-transform hover:scale-105 sm:text-3xl"
+            >
+              <Play className="h-6 w-6 fill-current" />
+              link VDO
+            </button>
+          </div>
+
+          <div className="mt-8 flex items-center justify-center gap-3 text-[#11823d]">
+            <div className="flex items-center gap-2">
+              <span className="font-headline text-5xl font-black italic leading-none tracking-tight">SM</span>
+              <span className="h-11 w-px bg-[#77a882]" />
+            </div>
+            <div>
+              <p className="font-headline text-xl font-extrabold uppercase leading-none">Bảo trợ học tập</p>
+              <p className="mt-1 text-sm font-bold text-[#1c1c1c]">Phát triển Toán trí tuệ tốt nhất</p>
+            </div>
           </div>
         </div>
 
