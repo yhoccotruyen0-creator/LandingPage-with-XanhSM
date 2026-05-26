@@ -122,7 +122,7 @@ export default function App() {
 
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-8 sm:gap-16 sm:px-6 md:py-12 lg:gap-20 lg:px-8">
           {/* 2. Customer pain hook questions */}
-          <PsychologicalHook />
+          <PsychologicalHook onRegisterClick={() => handleScrollToSection('dang-ky')} />
 
           {/* 3. Method Cognitive Benefits values cards */}
           <Benefits />
