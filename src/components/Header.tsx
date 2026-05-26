@@ -47,19 +47,26 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
           >
             Lợi ích chiến dịch
           </button>
+
+          <button
+            onClick={() => onScrollToSection('phuong-phap')}
+            className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
+          >
+            Chương trình Superbrain
+          </button>
           
           <button 
             onClick={() => onScrollToSection('dia-diem')}
             className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
           >
-            Tra cứu 21 cơ sở
+            Tra cứu cơ sở
           </button>
 
           <button
             onClick={onOpenHistory}
             className="relative font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
           >
-            Mã ưu đãi của tôi
+            Học bổng
             {registrationCount > 0 && (
               <span className="absolute -right-4 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#159650] px-1 text-[10px] font-black leading-none text-white">
                 {registrationCount}

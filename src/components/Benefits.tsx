@@ -37,7 +37,7 @@ export default function Benefits() {
   ];
 
   return (
-    <section id="loi-ich" className="rounded-2xl border border-[#dcefe2] bg-white p-6 shadow-sm sm:p-10 lg:p-14">
+    <section id="phuong-phap" className="scroll-mt-24 rounded-2xl border border-[#dcefe2] bg-white p-6 shadow-sm sm:p-10 lg:p-14">
       <div className="mx-auto max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

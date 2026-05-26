@@ -123,7 +123,7 @@ export default function RegistrationSection({
   };
 
   return (
-    <section id="dang-ky" className="scroll-mt-20 w-full max-w-4xl mx-auto py-4">
+    <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-4">
       <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
         
         {/* Left Column: Parental benefits sheet */}
