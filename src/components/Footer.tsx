@@ -43,18 +43,22 @@ export default function Footer({ onScrollToSection }: FooterProps) {
 
           {/* Core policy anchors */}
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-semibold text-[#2f6f3f]">
-            <button 
-              onClick={() => alert("Trang Chính sách bảo mật thông tin tài xế của học bổng Mầm Xanh Trí Tuệ.\nDữ liệu học sinh được bảo vệ tuyệt mật theo chuẩn quy định Superbrain.")}
+            <a
+              href="https://superbrain.edu.vn/privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-[#148144] transition-colors cursor-pointer"
             >
               Chính sách bảo mật
-            </button>
-            <button 
-              onClick={() => alert("Điều khoản xếp lịch và nhận ưu đãi:\nVoucher trị giá 1 triệu áp dụng cho khóa học Bingo đầu tiên trên toàn hệ thống Superbrain.\nKhông quy đổi thành tiền mặt hoặc áp dụng kèm chương trình khác.")}
+            </a>
+            <a
+              href="https://superbrain.edu.vn/dieu-khoan-dich-vu/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-[#148144] transition-colors cursor-pointer"
             >
-              Điều khoản sử dụng
-            </button>
+              Điều khoản dịch vụ
+            </a>
             <button 
               onClick={() => {
                 const mail = "yhoccotruyen0@gmail.com";
