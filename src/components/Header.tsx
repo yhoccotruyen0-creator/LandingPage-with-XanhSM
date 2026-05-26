@@ -1,5 +1,6 @@
 import React from 'react';
-import { Award, Search, Compass, BookOpen } from 'lucide-react';
+import { Award, Search, Compass } from 'lucide-react';
+import logoUrl from '../../logo.png';
 
 interface HeaderProps {
   onScrollToSection: (sectionId: string) => void;
@@ -17,9 +18,12 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
           onClick={() => onScrollToSection('hero')}
           className="flex items-center gap-2 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded-lg"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-primary-container text-white shadow-md">
-            <BookOpen className="h-5 w-5" />
-          </div>
+          <img
+            src={logoUrl}
+            alt=""
+            aria-hidden="true"
+            className="h-10 w-auto object-contain"
+          />
           <div>
             <h1 className="font-headline text-lg font-bold tracking-tight text-primary">
               Mầm Xanh Trí Tuệ

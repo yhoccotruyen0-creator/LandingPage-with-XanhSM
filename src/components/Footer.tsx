@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen } from 'lucide-react';
+import logoUrl from '../../logo.png';
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
@@ -17,9 +17,12 @@ export default function Footer({ onScrollToSection }: FooterProps) {
             onClick={() => onScrollToSection('hero')}
             className="flex items-center gap-2 text-left focus:outline-none rounded-lg"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-primary-container text-white shadow-sm">
-              <BookOpen className="h-4.5 w-4.5" />
-            </div>
+            <img
+              src={logoUrl}
+              alt=""
+              aria-hidden="true"
+              className="h-9 w-auto object-contain"
+            />
             <div>
               <p className="font-headline text-base font-bold text-primary leading-tight">
                 Mầm Xanh Trí Tuệ
