@@ -23,12 +23,15 @@ export default function Footer({ onScrollToSection }: FooterProps) {
               aria-hidden="true"
               className="h-8 w-auto object-contain sm:h-9"
             />
-            <div>
-              <p className="font-headline text-base font-bold text-[#148144] leading-tight sm:text-lg">
-                Mầm Xanh Trí Tuệ
+            <div className="space-y-0.5">
+              <p className="font-sans text-[10px] font-extrabold uppercase leading-none text-[#272727] sm:text-xs">
+                SUPERBRAIN x GREEN SM
               </p>
-              <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-[#2f8e2f]">
-                Superbrain x Xanh SM
+              <p className="font-headline text-base font-extrabold uppercase leading-none text-[#148144] sm:text-lg">
+                MẦM XANH TRÍ TUỆ
+              </p>
+              <p className="font-sans text-[11px] font-bold leading-none text-[#272727] sm:text-xs">
+                Đồng hành vì tương lai Việt Nam
               </p>
             </div>
           </button>

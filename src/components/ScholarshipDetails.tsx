@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map } from 'lucide-react';
-import voucherImage from '../../voucher-02.png';
+import voucherImage from '../../voucher-01.png';
 
 interface ScholarshipDetailsProps {
   onRegisterClick: () => void;

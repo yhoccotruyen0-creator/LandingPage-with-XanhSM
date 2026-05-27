@@ -1,5 +1,4 @@
 import React from 'react';
-import { Search } from 'lucide-react';
 import logoUrl from '../../logo.png';
 
 interface HeaderProps {
@@ -16,22 +15,25 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
         {/* Brand Logo */}
         <button 
           onClick={() => onScrollToSection('hero')}
-          className="flex min-w-0 items-center gap-2 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded-lg sm:gap-3"
+          className="flex min-w-0 flex-col items-center gap-1 rounded-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 sm:flex-row sm:gap-3 sm:text-left"
         >
           <img
             src={logoUrl}
             alt=""
             aria-hidden="true"
-            className="h-10 w-auto shrink-0 object-contain sm:h-12"
+            className="h-9 w-auto shrink-0 object-contain sm:h-12"
           />
           <span className="hidden h-11 w-px bg-[#88b99b] sm:block" />
 
-          <span className="hidden min-w-0 space-y-0.5 min-[420px]:block">
-            <span className="block whitespace-nowrap font-headline text-base font-extrabold leading-none text-[#148144] sm:text-lg">
-              Mầm Xanh Trí Tuệ
+          <span className="block min-w-0 space-y-0.5">
+            <span className="block whitespace-nowrap font-sans text-[9px] font-extrabold uppercase leading-none text-[#272727] sm:text-[11px]">
+              SUPERBRAIN x GREEN SM
             </span>
-            <span className="block whitespace-nowrap font-sans text-xs font-bold leading-none text-[#272727] sm:text-sm">
-              Hành trình khơi dậy tinh hoa
+            <span className="block whitespace-nowrap font-headline text-sm font-extrabold uppercase leading-none text-[#148144] sm:text-lg">
+              MẦM XANH TRÍ TUỆ
+            </span>
+            <span className="block whitespace-nowrap font-sans text-[10px] font-bold leading-none text-[#272727] sm:text-xs">
+              Đồng hành vì tương lai Việt Nam
             </span>
           </span>
         </button>
@@ -44,6 +46,14 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
           >
             Tra cứu cơ sở
           </button>
+          <a
+            href="https://superbrain.edu.vn/chuong-trinh-hoc/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447]"
+          >
+            Chương trình Superbrain
+          </a>
         </nav>
 
         {/* Call to Action Buttons */}
@@ -63,10 +73,9 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
 
           <button
             onClick={() => onScrollToSection('dia-diem')}
-            aria-label="Tra cứu cơ sở"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#159650]/20 text-[#137c44] transition-colors hover:bg-[#eaf8ef] sm:h-10 sm:w-10 lg:hidden"
+            className="flex min-h-9 items-center justify-center rounded-lg border border-[#159650]/20 px-3 py-2 text-center font-headline text-xs font-bold leading-tight text-[#137c44] transition-colors hover:bg-[#eaf8ef] sm:min-h-10 sm:px-4 sm:text-sm lg:hidden"
           >
-            <Search className="h-5 w-5" />
+            Tra cứu cơ sở
           </button>
 
           <button 
