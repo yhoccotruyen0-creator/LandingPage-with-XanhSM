@@ -1,5 +1,5 @@
 import React from 'react';
-import logoUrl from '../../logo.png';
+import logoUrl from '../../uploads/logo.png';
 
 interface HeaderProps {
   onScrollToSection: (sectionId: string) => void;

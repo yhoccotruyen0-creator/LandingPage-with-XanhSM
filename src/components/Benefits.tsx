@@ -1,4 +1,7 @@
 import React from 'react';
+import programImage1 from '../../uploads/image_1.png';
+import programImage2 from '../../uploads/image_2.png';
+import programImage3 from '../../uploads/image_3.png';
 import { motion } from 'motion/react';
 import { BookOpen, Building2, Globe2, GraduationCap, Handshake, Users } from 'lucide-react';
 
@@ -37,9 +40,9 @@ export default function Benefits() {
   ];
 
   const programImages = [
-    { id: 'program-image-1', src: '/image_1.png', alt: 'Hoạt động chương trình Superbrain 1' },
-    { id: 'program-image-2', src: '/image_2.png', alt: 'Hoạt động chương trình Superbrain 2' },
-    { id: 'program-image-3', src: '/image_3.png', alt: 'Hoạt động chương trình Superbrain 3' }
+    { id: 'program-image-1', src: programImage1, alt: 'Hoạt động chương trình Superbrain 1' },
+    { id: 'program-image-2', src: programImage2, alt: 'Hoạt động chương trình Superbrain 2' },
+    { id: 'program-image-3', src: programImage3, alt: 'Hoạt động chương trình Superbrain 3' }
   ];
 
   return (

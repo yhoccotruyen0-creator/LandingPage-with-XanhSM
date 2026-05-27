@@ -1,9 +1,9 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
-import chongMatImage from '../../chong-mat.jpg';
-import otoImage from '../../oto.jpg';
-import tymImage from '../../tym.jpg';
+import chongMatImage from '../../uploads/chong-mat.jpg';
+import otoImage from '../../uploads/oto.jpg';
+import tymImage from '../../uploads/tym.jpg';
 
 interface PsychologicalHookProps {
   onRegisterClick: () => void;

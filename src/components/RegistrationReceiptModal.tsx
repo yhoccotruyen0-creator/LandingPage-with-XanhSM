@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, X, MapPin } from 'lucide-react';
 import { Registration } from '../types';
-import voucherPreviewImage from '../../voucher-01.png';
+import voucherPreviewImage from '../../uploads/voucher-01.png';
 
 interface RegistrationReceiptModalProps {
   isOpen: boolean;

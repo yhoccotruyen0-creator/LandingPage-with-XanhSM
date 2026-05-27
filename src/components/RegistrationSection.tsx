@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import sampleImage from '../../uploads/sample.png';
 import { ArrowRight, User, Baby, Phone } from 'lucide-react';
 import { SuperbrainCenter, Registration } from '../types';
 import { motion } from 'motion/react';
@@ -124,7 +125,7 @@ export default function RegistrationSection({
         <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-2xl border border-[#dcefe2] bg-white p-4 shadow-sm sm:min-h-[520px] sm:p-6">
           <div className="flex min-h-0 flex-1 items-center justify-center">
             <img
-              src="/sample.png"
+              src={sampleImage}
               alt="Thông tin điều kiện sử dụng chương trình"
               className="max-h-full w-full object-contain"
             />
