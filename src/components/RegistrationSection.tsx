@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Info, CheckCircle, Phone, ArrowRight, User, Baby } from 'lucide-react';
+import { ArrowRight, User, Baby, Phone } from 'lucide-react';
 import { SuperbrainCenter, Registration } from '../types';
 import { motion } from 'motion/react';
 
@@ -120,55 +120,24 @@ export default function RegistrationSection({
     <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-2 sm:py-4">
       <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
         
-        {/* Left Column: Parental benefits sheet */}
-        <div className="flex h-full flex-col gap-5 rounded-2xl border border-[#dcefe2] bg-white p-5 shadow-sm sm:gap-6 sm:p-8">
-          <div className="flex items-center gap-2.5 text-[#148144]">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
-              <Info className="h-5 w-5" />
-            </div>
-            <h2 className="font-headline text-lg sm:text-xl font-bold leading-tight text-[#148144]">
-              Thông tin hỗ trợ phụ huynh
-            </h2>
+        {/* Left Column: Usage terms image */}
+        <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-2xl border border-[#dcefe2] bg-white p-4 shadow-sm sm:min-h-[520px] sm:p-6">
+          <div className="flex min-h-0 flex-1 items-center justify-center">
+            <img
+              src="/sample.png"
+              alt="Thông tin điều kiện sử dụng chương trình"
+              className="max-h-full w-full object-contain"
+            />
           </div>
 
-          <div className="rounded-xl border border-[#bfe4c8] bg-[#f6fcf2] p-4 sm:p-6">
-            <h3 className="font-headline font-bold text-[#123d2a] mb-3 text-sm">
-              Mỗi suất đăng ký được duyệt bao gồm:
-            </h3>
-            
-            <ul className="space-y-4">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle className="h-4.5 w-4.5 text-[#148144] shrink-0 mt-0.5" />
-                <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium leading-relaxed">
-                  Ưu đãi ngay <strong className="text-[#148144]">1.000.000 VNĐ</strong> học phí trực tiếp.
-                </p>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle className="h-4.5 w-4.5 text-[#148144] shrink-0 mt-0.5" />
-                <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium leading-relaxed">
-                  Tặng kèm bộ Giáo cụ Soroban nhập khẩu cao cấp.
-                </p>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle className="h-4.5 w-4.5 text-[#148144] shrink-0 mt-0.5" />
-                <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium leading-relaxed">
-                  Miễn phí 100% buổi đánh giá khả năng tập trung toàn diện cho trẻ (30 phút).
-                </p>
-              </li>
-            </ul>
-          </div>
-
-
-          <div className="flex-1" />
-
-          <div className="flex items-start gap-3 pt-5 border-t border-[#dcefe2] sm:items-center sm:gap-3.5">
+          <div className="mt-5 flex items-start gap-3 border-t border-[#dcefe2] pt-5 sm:items-center sm:gap-3.5">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <Phone className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-semibold text-[#2f6f3f]">Hotline Tổng đài Superbrain hỗ trợ:</p>
-              <p className="font-headline text-sm sm:text-base font-extrabold leading-snug text-[#148144]">
-                1900 636 079 <span className="block font-sans text-xs font-semibold text-[#2f6f3f] sm:ml-1 sm:inline">(8:00 - 18:00 hằng ngày)</span>
+              <p className="font-sans text-xs font-semibold text-[#2f6f3f]">Liên hệ hỗ trợ</p>
+              <p className="font-headline text-sm font-extrabold leading-snug text-[#148144] sm:text-base">
+                Hotline: 09 188 188 00
               </p>
             </div>
           </div>

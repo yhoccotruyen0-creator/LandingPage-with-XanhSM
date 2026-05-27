@@ -38,14 +38,14 @@ export default function Footer({ onScrollToSection }: FooterProps) {
 
           {/* Copyright description */}
           <div className="max-w-xl text-center text-sm text-[#2f6f3f] font-medium lg:text-left">
-            <p>© 2026 Mầm Xanh Trí Tuệ. Bản quyền thuộc về Superbrain & Xanh SM.</p>
+            <p>© 2026 Mầm Xanh Trí Tuệ. Bản quyền thuộc về Superbrain & Green SM.</p>
             <p className="mt-1 text-xs opacity-80">
-              Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ tài xế Xanh SM Việt Nam.
+              Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ bác tài Green SM Việt Nam.
             </p>
           </div>
 
           {/* Core policy anchors */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm font-semibold text-[#2f6f3f] sm:gap-x-6">
+          <nav className="flex flex-col items-center justify-center gap-3 text-sm font-semibold text-[#2f6f3f]">
             <a
               href="https://superbrain.edu.vn/privacy-policy/"
               target="_blank"

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Brain, Car, HeartHandshake, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
+import chongMatImage from '../../chong-mat.jpg';
+import otoImage from '../../oto.jpg';
+import tymImage from '../../tym.jpg';
 
 interface PsychologicalHookProps {
   onRegisterClick: () => void;
@@ -10,17 +13,17 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
   const cards = [
     {
       id: "pain-card-1",
-      icon: <HeartHandshake className="h-6 w-6 text-[#148144]" />,
+      icon: tymImage,
       text: "Mong muốn đem điều tốt nhất dành cho con"
     },
     {
       id: "pain-card-2",
-      icon: <Brain className="h-6 w-6 text-[#148144]" />,
+      icon: chongMatImage,
       text: "Con kém tập trung, học trước quên sau, sợ môn Toán?"
     },
     {
       id: "pain-card-3",
-      icon: <Car className="h-6 w-6 text-[#148144]" />,
+      icon: otoImage,
       text: "Ba bận rộn, không có thời gian kèm con học mỗi ngày?"
     }
   ];
@@ -48,8 +51,13 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
             whileHover={{ y: -4, shadow: "0 10px 25px -5px rgba(0,0,0,0.05)" }}
             className="flex min-h-40 flex-col items-center justify-center gap-4 rounded-2xl border border-[#e8e8ea] bg-white p-5 text-center shadow-sm transition-all sm:min-h-48 sm:gap-5 sm:p-6"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#e9f8ed] to-[#d9f2e2] ring-4 ring-[#edf9f1]">
-              {card.icon}
+            <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-white sm:h-24 sm:w-24">
+              <img
+                src={card.icon}
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-contain"
+              />
             </div>
             <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f]">
               {card.text}
