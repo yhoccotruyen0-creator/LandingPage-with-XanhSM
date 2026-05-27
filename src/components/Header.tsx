@@ -33,45 +33,16 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
             <span className="block whitespace-nowrap font-sans text-xs font-bold leading-none text-[#272727] sm:text-sm">
               Hành trình khơi dậy tinh hoa
             </span>
-            <span className="block whitespace-nowrap font-headline text-xs font-extrabold uppercase leading-none tracking-wide text-[#158a50] sm:text-sm">
-              Superbrain x Xanh SM
-            </span>
           </span>
         </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 lg:flex">
           <button 
-            onClick={() => onScrollToSection('loi-ich')}
-            className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
-          >
-            Lợi ích chiến dịch
-          </button>
-
-          <button
-            onClick={() => onScrollToSection('phuong-phap')}
-            className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
-          >
-            Chương trình Superbrain
-          </button>
-          
-          <button 
             onClick={() => onScrollToSection('dia-diem')}
             className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
           >
             Tra cứu cơ sở
-          </button>
-
-          <button
-            onClick={onOpenHistory}
-            className="relative font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447] cursor-pointer"
-          >
-            Học bổng
-            {registrationCount > 0 && (
-              <span className="absolute -right-4 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#159650] px-1 text-[10px] font-black leading-none text-white">
-                {registrationCount}
-              </span>
-            )}
           </button>
         </nav>
 
@@ -102,7 +73,7 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
             onClick={() => onScrollToSection('dang-ky')}
             className="rounded-lg bg-[#14934f] px-4 py-2.5 font-headline text-xs font-bold text-white shadow-[0_10px_24px_rgba(20,147,79,0.22)] transition-all hover:bg-[#0f7f42] active:scale-95 sm:px-6 sm:text-base"
           >
-            Đăng ký giữ chỗ
+            Đặt lịch tư vấn
           </button>
         </div>
       </div>

@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Info, CheckCircle, Phone, ArrowRight, User, Baby, HelpCircle } from 'lucide-react';
+import { Info, CheckCircle, Phone, ArrowRight, User, Baby } from 'lucide-react';
 import { SuperbrainCenter, Registration } from '../types';
 import { motion } from 'motion/react';
-
-const AGE_GROUPS = [
-  "3 - 5 tuổi",
-  "6 - 8 tuổi",
-  "9 - 12 tuổi"
-];
 
 interface RegistrationSectionProps {
   centers: SuperbrainCenter[];
@@ -78,7 +72,7 @@ export default function RegistrationSection({
     const errors: Record<string, string> = {};
     if (!parentName.trim()) errors.parentName = "Vui lòng nhập tên phụ huynh";
     if (!childName.trim()) errors.childName = "Vui lòng nhập tên bé";
-    if (!childAge) errors.childAge = "Vui lòng chọn độ tuổi";
+    if (!childAge.trim()) errors.childAge = "Vui lòng nhập độ tuổi";
     if (!phoneNumber.trim()) {
       errors.phoneNumber = "Vui lòng nhập số điện thoại";
     } else if (!/^[0-9+ ]{9,13}$/.test(phoneNumber.trim())) {
@@ -164,12 +158,6 @@ export default function RegistrationSection({
             </ul>
           </div>
 
-          <div>
-            <p className="font-headline text-sm font-bold text-[#123d2a] mb-1">Địa điểm học tập:</p>
-            <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] leading-relaxed font-semibold">
-              Hỗ trợ học và giữ chỗ tại bất kỳ cơ sở nào trong số các cơ sở được Superbrain tuyển chọn nâng cấp khóa học.
-            </p>
-          </div>
 
           <div className="flex-1" />
 
@@ -194,10 +182,10 @@ export default function RegistrationSection({
 
           <div className="text-center mb-6">
             <h2 className="font-headline text-xl sm:text-2xl font-bold text-[#148144]">
-              Đăng Ký Giữ Suất
+              Hẹn lịch tư vấn
             </h2>
             <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium mt-1">
-              Vui lòng cung cấp thông tin bên dưới để được hệ thống duyệt voucher tự động.
+              Vui lòng điền thông tin để nhận voucher và đặt lịch tư vấn
             </p>
           </div>
 
@@ -265,7 +253,12 @@ export default function RegistrationSection({
                 <label className="flex items-center gap-1.5 font-headline text-xs sm:text-sm font-bold text-[#123d2a]">
                   Độ Tuổi <span className="text-red-500 font-extrabold">*</span>
                 </label>
-                <select
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min="1"
+                  max="18"
+                  placeholder="Nhập độ tuổi..."
                   className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
                     formErrors.childAge ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
@@ -276,12 +269,7 @@ export default function RegistrationSection({
                       setFormErrors(prev => ({ ...prev, childAge: '' }));
                     }
                   }}
-                >
-                  <option value="">Chọn</option>
-                  {AGE_GROUPS.map(ag => (
-                    <option key={ag} value={ag}>{ag}</option>
-                  ))}
-                </select>
+                />
                 {formErrors.childAge && (
                   <span className="text-[10px] font-bold text-error mt-0.5">{formErrors.childAge}</span>
                 )}

@@ -8,7 +8,7 @@ interface HeroProps {
   onRegisterClick: () => void;
 }
 
-export default function Hero({ onRegisterClick }: HeroProps) {
+export default function Hero(_props: HeroProps) {
   return (
     <section id="hero" className="relative overflow-hidden bg-[#effbf4]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(91,190,111,0.18),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(253,208,64,0.16),transparent_24%),linear-gradient(180deg,#f6fff9_0%,#eaf8f0_100%)]" />
@@ -60,22 +60,8 @@ export default function Hero({ onRegisterClick }: HeroProps) {
               <Clock className="h-5 w-5" />
             </div>
             <p className="font-headline text-sm font-extrabold leading-tight sm:text-base">
-              Số lượng có hạn - đăng ký giữ chỗ ngay hôm nay
+              Hãy tặng món quà tốt nhất cho con ngay hôm nay!
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-6 flex flex-col gap-3.5 sm:flex-row"
-          >
-            <button
-              onClick={onRegisterClick}
-              className="flex items-center justify-center gap-2 rounded-lg bg-[#14934f] px-6 py-3 font-headline text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(20,147,79,0.22)] transition-all hover:bg-[#0f7f42] active:scale-[0.98] cursor-pointer"
-            >
-              Đăng ký giữ chỗ
-            </button>
           </motion.div>
         </div>
 
@@ -104,17 +90,6 @@ export default function Hero({ onRegisterClick }: HeroProps) {
                 </div>
               </>
             )}
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-3 text-[#11823d]">
-            <div className="flex items-center gap-2">
-              <span className="font-headline text-5xl font-black italic leading-none tracking-tight">SM</span>
-              <span className="h-11 w-px bg-[#77a882]" />
-            </div>
-            <div>
-              <p className="font-headline text-xl font-extrabold uppercase leading-none">Bảo trợ học tập</p>
-              <p className="mt-1 text-sm font-bold text-[#1c1c1c]">Phát triển Toán trí tuệ tốt nhất</p>
-            </div>
           </div>
         </div>
 

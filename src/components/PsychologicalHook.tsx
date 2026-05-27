@@ -1,12 +1,12 @@
 import React from 'react';
-import { ArrowRight, Brain, Car, HeartHandshake, Sparkles } from 'lucide-react';
+import { Brain, Car, HeartHandshake, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface PsychologicalHookProps {
   onRegisterClick: () => void;
 }
 
-export default function PsychologicalHook({ onRegisterClick }: PsychologicalHookProps) {
+export default function PsychologicalHook(_props: PsychologicalHookProps) {
   const cards = [
     {
       id: "pain-card-1",
@@ -74,12 +74,9 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
               <h3 className="font-headline text-base font-extrabold text-[#137c44]">
                 Chương trình Toán trí tuệ Superbrain
               </h3>
-              <span className="rounded-full bg-[#e4f3da] px-2.5 py-1 text-xs font-bold text-[#4b8e3a]">
-                Lời khuyên sư phạm bách khoa
-              </span>
             </div>
             <p className="mt-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
-              Được thiết kế để kích thích não bộ phát triển toàn diện, giúp con cải thiện <strong>TẬP TRUNG</strong> - <strong>GHI NHỚ</strong> - <strong>PHẢN XẠ</strong> và <strong>TỰ TIN</strong> hơn mỗi ngày.
+              Toán trí tuệ Superbrain giúp trẻ phát triển trí não cho một cách toàn diện và cải thiện khả năng <strong>TẬP TRUNG</strong> - <strong>GHI NHỚ</strong> - <strong>PHẢN XẠ</strong> - <strong>TỰ TIN</strong>.
             </p>
           </div>
         </div>
@@ -95,13 +92,6 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
         <p className="font-headline text-sm font-bold text-[#148144] sm:text-base">
           Ba yên tâm trên mọi cung đường - Superbrain giúp con tự tin mỗi ngày.
         </p>
-        <button
-          onClick={onRegisterClick}
-          className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-[#148144]/40 bg-white px-3 py-1.5 font-headline text-xs font-extrabold text-[#148144] transition-colors hover:bg-[#148144] hover:text-white"
-        >
-          Đăng ký ngay
-          <ArrowRight className="h-4 w-4" />
-        </button>
       </motion.div>
     </section>
   );
