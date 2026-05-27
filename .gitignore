@@ -7,3 +7,4 @@ coverage/
 .env*
 !.env.example
 *.mp4
+.devcontainer/devcontainer.json
