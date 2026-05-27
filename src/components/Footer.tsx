@@ -10,7 +10,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
     <footer className="mt-12 border-t border-[#bfe4c8] bg-[#f6fcf2] sm:mt-16">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-11 lg:px-8">
         
-        <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
+        <div className="flex flex-col items-center justify-between gap-6 xl:flex-row">
           
           {/* Logo brand */}
           <button
@@ -37,7 +37,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
           </button>
 
           {/* Copyright description */}
-          <div className="max-w-xl text-center text-sm text-[#2f6f3f] font-medium lg:text-left">
+          <div className="max-w-xl text-center text-sm text-[#2f6f3f] font-medium xl:text-left">
             <p>© 2026 Mầm Xanh Trí Tuệ. Bản quyền thuộc về Superbrain & Green SM.</p>
             <p className="mt-1 text-xs opacity-80">
               Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ bác tài Green SM Việt Nam.
