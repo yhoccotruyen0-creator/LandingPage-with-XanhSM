@@ -1,4 +1,5 @@
 import React from 'react';
+import { BookOpen } from 'lucide-react';
 import logoUrl from '../../uploads/logo.png';
 
 interface HeaderProps {
@@ -52,12 +53,13 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
             rel="noopener noreferrer"
             className="font-headline text-base font-bold text-[#202020] transition-colors hover:text-[#178447]"
           >
-            Chương trình Superbrain
+            Chương trình Toán trí tuệ Superbrain
           </a>
         </nav>
 
         {/* Call to Action Buttons */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+        <div className="flex min-w-0 flex-1 flex-col items-end gap-1.5 lg:flex-none">
+          <div className="flex w-full max-w-[22rem] shrink-0 items-center justify-between gap-2 sm:gap-2.5 lg:w-auto lg:max-w-none">
           {/* My Registrations Button */}
           {registrationCount > 0 && (
             <button
@@ -84,6 +86,17 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
           >
             Đặt lịch tư vấn
           </button>
+          </div>
+
+          <a
+            href="https://superbrain.edu.vn/chuong-trinh-hoc/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-9 w-full max-w-[22rem] items-center justify-center gap-1.5 rounded-lg border border-[#159650]/20 bg-white px-3 py-2 text-center font-headline text-[11px] font-bold leading-tight text-[#137c44] transition-colors hover:bg-[#eaf8ef] sm:min-h-10 sm:text-xs lg:hidden"
+          >
+            <BookOpen className="h-3.5 w-3.5 shrink-0" />
+            <span className="min-w-0 truncate">Chương trình Toán trí tuệ Superbrain</span>
+          </a>
         </div>
       </div>
     </header>

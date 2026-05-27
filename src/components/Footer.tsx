@@ -40,7 +40,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
           <div className="max-w-xl text-center text-sm text-[#2f6f3f] font-medium xl:text-left">
             <p>© 2026 Mầm Xanh Trí Tuệ. Bản quyền thuộc về Superbrain & Green SM.</p>
             <p className="mt-1 text-xs opacity-80">
-              Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ bác tài Green SM Việt Nam.
+              Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ bác tài Xanh Green SM.
             </p>
           </div>
 
