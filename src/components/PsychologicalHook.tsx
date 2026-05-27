@@ -32,7 +32,7 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-4xl font-headline text-2xl font-extrabold leading-tight text-on-background sm:text-3xl md:text-4xl"
+        className="mx-auto max-w-5xl font-headline text-2xl font-extrabold leading-tight text-on-background sm:text-3xl md:text-4xl"
       >
         Mỗi chuyến xe bác tài lăn bánh là một lần trăn trở...
       </motion.h2>

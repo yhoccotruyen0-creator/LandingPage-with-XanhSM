@@ -28,7 +28,7 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
               <Wallet2 className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Giá trị học bổng</p>
+              <p className="font-headline text-sm font-extrabold uppercase tracking-wider text-[#148144] sm:text-base">Giá trị học bổng</p>
               <p className="mt-1 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
                 Ưu đãi <span className="font-extrabold text-[#148144]">1.000.000 VNĐ</span> học phí khóa học Bingo đầu tiên tại các cơ sở đồng hành Superbrain.
               </p>
@@ -40,7 +40,7 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
               <CheckSquare className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Điều kiện áp dụng</p>
+              <p className="font-headline text-sm font-extrabold uppercase tracking-wider text-[#148144] sm:text-base">Điều kiện áp dụng</p>
               <ul className="mt-1 space-y-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
                 <li>Áp dụng cho học viên mới đăng ký, chưa từng học tại Superbrain.</li>
                 <li>Không quy đổi thành tiền mặt và không áp dụng đồng thời các chương trình khác.</li>
@@ -53,7 +53,7 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
               <Calendar className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Thời hạn sử dụng</p>
+              <p className="font-headline text-sm font-extrabold uppercase tracking-wider text-[#148144] sm:text-base">Thời hạn sử dụng</p>
               <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-[#2f6f3f]">
                 Đến hết ngày <span className="font-extrabold text-[#148144]">31/08/2026</span>.
               </p>
@@ -65,7 +65,7 @@ export default function ScholarshipDetails({ onRegisterClick, onFinderClick }: S
               <MapPin className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#148144]">Địa điểm chấp nhận</p>
+              <p className="font-headline text-sm font-extrabold uppercase tracking-wider text-[#148144] sm:text-base">Địa điểm chấp nhận</p>
               <p className="mt-1 font-sans text-sm sm:text-base font-semibold text-[#2f6f3f]">
                 Áp dụng đồng bộ tại các cơ sở đồng hành cùng Superbrain.
               </p>

@@ -98,14 +98,45 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
       </div>
 
       {/* Area filter block */}
-      <div className="rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] p-5 sm:p-6 lg:p-8 flex flex-col gap-6">
+      <div className="rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6 flex flex-col gap-4">
         
         {/* Search header container */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <h3 className="font-headline text-xs font-bold tracking-wider text-[#148144] uppercase whitespace-nowrap">
+        <div className="flex items-center">
+          <h3 className="font-headline text-sm font-bold tracking-wider text-[#148144] uppercase whitespace-nowrap">
             BỘ LỌC KHU VỰC NHANH
           </h3>
-          <div className="relative flex-grow max-w-md">
+        </div>
+
+        {/* Tỉnh / Thành phố quick list tabs */}
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] lg:items-end">
+          <div className="flex min-w-0 flex-col gap-2">
+            <p className="text-xs font-bold text-[#2f6f3f] uppercase tracking-wider">
+              Tỉnh / Thành phố
+            </p>
+            
+            {/* Scrollable container for chips */}
+            <div className="flex gap-2 overflow-x-auto pb-1 custom-scrollbar">
+              {provinces.map(prov => {
+                const count = provinceCounts[prov] || 0;
+                const isSelected = selectedProvince.toLowerCase() === prov.toLowerCase();
+                return (
+                  <button
+                    key={`prov-chip-${prov}`}
+                    onClick={() => setSelectedProvince(prov)}
+                    className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 shadow-sm cursor-pointer border ${
+                      isSelected
+                        ? "bg-[#148144] text-white border-[#148144] scale-102"
+                        : "bg-white text-[#185c34] border-[#bfe4c8] hover:border-[#148144]/60 hover:text-[#148144]"
+                    }`}
+                  >
+                    {prov} ({count})
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="relative min-w-0">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#148144] text-sm h-4.5 w-4.5" />
             <input
               type="text"
@@ -114,34 +145,6 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </div>
-        </div>
-
-        {/* Tỉnh / Thành phố quick list tabs */}
-        <div className="flex flex-col gap-2">
-          <p className="text-[10px] font-bold text-[#2f6f3f] uppercase tracking-wider">
-            Tỉnh / Thành phố
-          </p>
-          
-          {/* Scrollable container for chips */}
-          <div className="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
-            {provinces.map(prov => {
-              const count = provinceCounts[prov] || 0;
-              const isSelected = selectedProvince.toLowerCase() === prov.toLowerCase();
-              return (
-                <button
-                  key={`prov-chip-${prov}`}
-                  onClick={() => setSelectedProvince(prov)}
-                  className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 shadow-sm cursor-pointer border ${
-                    isSelected
-                      ? "bg-[#148144] text-white border-[#148144] scale-102"
-                      : "bg-white text-[#185c34] border-[#bfe4c8] hover:border-[#148144]/60 hover:text-[#148144]"
-                  }`}
-                >
-                  {prov} ({count})
-                </button>
-              );
-            })}
           </div>
         </div>
 
