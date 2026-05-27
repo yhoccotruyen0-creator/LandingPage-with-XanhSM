@@ -146,9 +146,9 @@ export default function App() {
       <main className="flex-grow w-full">
         
         {/* Decorative Brand Announcement Header bar */}
-        <div className="bg-[#eefbf4] px-4 pt-6 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl rounded-2xl border-2 border-[#72b88d] bg-white/80 px-5 py-4 text-center shadow-sm sm:px-8">
-            <p className="font-headline text-xl font-bold leading-snug text-[#171717] sm:text-2xl lg:text-3xl">            
+        <div className="bg-[#eefbf4] px-3 pt-4 sm:px-6 sm:pt-6 lg:px-8">
+          <div className="mx-auto max-w-7xl rounded-2xl border-2 border-[#72b88d] bg-white/80 px-4 py-3 text-center shadow-sm sm:px-8 sm:py-4">
+            <p className="font-headline text-base font-bold leading-snug text-[#171717] sm:text-2xl lg:text-3xl">            
               <span className="block pt-1">
                 Đặc quyền dành riêng cho <span className="font-extrabold text-[#148144]">bác tài Xanh Green SM!</span>
               </span>
@@ -159,7 +159,7 @@ export default function App() {
         {/* 1. Hero Segment */}
         <Hero onRegisterClick={() => handleScrollToSection('dang-ky')} />
 
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-8 sm:gap-16 sm:px-6 md:py-12 lg:gap-20 lg:px-8">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-7 sm:gap-14 sm:px-6 md:py-10 lg:gap-20 lg:px-8">
           {/* 2. Customer pain hook questions */}
           <PsychologicalHook onRegisterClick={() => handleScrollToSection('dang-ky')} />
 

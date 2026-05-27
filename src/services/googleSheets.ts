@@ -10,12 +10,49 @@ function toText(value: unknown): string {
   return String(value).trim();
 }
 
+function normalizeKey(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/(^_|_$)/g, '');
+}
+
 function getFirst(row: RawCenterRow, keys: string[]): string {
+  const normalizedRow = new Map<string, unknown>();
+
+  Object.entries(row).forEach(([key, value]) => {
+    normalizedRow.set(normalizeKey(key), value);
+  });
+
   for (const key of keys) {
-    const value = toText(row[key]);
+    const value = toText(row[key] ?? normalizedRow.get(normalizeKey(key)));
     if (value) return value;
   }
   return '';
+}
+
+function normalizeSheetRow(row: RawCenterRow | unknown[]): RawCenterRow {
+  if (!Array.isArray(row)) return row;
+
+  return {
+    location: row[0],
+    branch: row[1],
+    email: row[2],
+    hotline: row[3],
+    address: row[4]
+  };
+}
+
+function formatHotline(value: string): string {
+  const compact = value.replace(/\s+/g, '');
+  const digitsOnly = compact.replace(/\D/g, '');
+
+  if (!digitsOnly || digitsOnly.length !== compact.length) return value;
+  if (digitsOnly.length === 9 && /^[35789]/.test(digitsOnly)) return `0${digitsOnly}`;
+
+  return value;
 }
 
 function slugify(value: string): string {
@@ -39,7 +76,19 @@ function normalizeCenter(
 
   const district = getFirst(row, ['district', 'quan_huyen', 'districtName']);
   const address = getFirst(row, ['address', 'dia_chi']);
-  const hotline = getFirst(row, ['hotline', 'phone', 'sdt']) || '1900 636 079';
+  const hotline = formatHotline(
+    getFirst(row, [
+      'hotline',
+      'hot_line',
+      'phone',
+      'phone_number',
+      'sdt',
+      'so_dien_thoai',
+      'số điện thoại',
+      'dien_thoai',
+      'điện thoại'
+    ])
+  ) || '1900 636 079';
   const email = getFirst(row, ['email', 'email_coso']);
 
   return {
@@ -70,7 +119,7 @@ export function normalizeCentersFromSheet(rawData: unknown): SuperbrainCenter[] 
   if (Array.isArray(rawData)) {
     rawData.forEach((row, index) => {
       if (!row || typeof row !== 'object') return;
-      const center = normalizeCenter(row as RawCenterRow, index);
+      const center = normalizeCenter(normalizeSheetRow(row as RawCenterRow | unknown[]), index);
       if (center) centers.push(center);
     });
   } else {
@@ -85,7 +134,7 @@ export function normalizeCentersFromSheet(rawData: unknown): SuperbrainCenter[] 
         }
 
         if (!branch || typeof branch !== 'object') return;
-        const center = normalizeCenter(branch as RawCenterRow, index, province);
+        const center = normalizeCenter(normalizeSheetRow(branch as RawCenterRow | unknown[]), index, province);
         if (center) centers.push(center);
       });
     });

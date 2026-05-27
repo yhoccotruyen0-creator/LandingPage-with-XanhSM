@@ -1,5 +1,5 @@
 import React from 'react';
-import logoUrl from '../../logo.png';
+import logoUrl from '../../uploads/logo.png';
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
@@ -7,10 +7,10 @@ interface FooterProps {
 
 export default function Footer({ onScrollToSection }: FooterProps) {
   return (
-    <footer className="mt-16 border-t border-[#bfe4c8] bg-[#f6fcf2]">
-      <div className="mx-auto max-w-7xl px-4 py-11 sm:px-6 lg:px-8">
+    <footer className="mt-12 border-t border-[#bfe4c8] bg-[#f6fcf2] sm:mt-16">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-11 lg:px-8">
         
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col items-center justify-between gap-6 xl:flex-row">
           
           {/* Logo brand */}
           <button
@@ -21,28 +21,31 @@ export default function Footer({ onScrollToSection }: FooterProps) {
               src={logoUrl}
               alt=""
               aria-hidden="true"
-              className="h-9 w-auto object-contain"
+              className="h-8 w-auto object-contain sm:h-9"
             />
-            <div>
-              <p className="font-headline text-lg font-bold text-[#148144] leading-tight">
-                Mầm Xanh Trí Tuệ
+            <div className="space-y-0.5">
+              <p className="font-sans text-[10px] font-extrabold uppercase leading-none text-[#272727] sm:text-xs">
+                SUPERBRAIN x GREEN SM
               </p>
-              <p className="font-sans text-[11px] font-bold uppercase tracking-wider text-[#2f8e2f]">
-                Superbrain x Xanh SM
+              <p className="font-headline text-base font-extrabold uppercase leading-none text-[#148144] sm:text-lg">
+                MẦM XANH TRÍ TUỆ
+              </p>
+              <p className="font-sans text-[11px] font-bold leading-none text-[#272727] sm:text-xs">
+                Đồng hành vì tương lai Việt Nam
               </p>
             </div>
           </button>
 
           {/* Copyright description */}
-          <div className="text-center md:text-left text-sm text-[#2f6f3f] font-medium">
-            <p>© 2026 Mầm Xanh Trí Tuệ. Bản quyền thuộc về Superbrain & Xanh SM.</p>
+          <div className="max-w-xl text-center text-sm text-[#2f6f3f] font-medium xl:text-left">
+            <p>© 2026 Mầm Xanh Trí Tuệ. Bản quyền thuộc về Superbrain & Green SM.</p>
             <p className="mt-1 text-xs opacity-80">
-              Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ tài xế Xanh SM Việt Nam.
+              Chương trình tài tài trợ đặc quyền dành riêng cho con em đội ngũ bác tài Xanh Green SM.
             </p>
           </div>
 
           {/* Core policy anchors */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-semibold text-[#2f6f3f]">
+          <nav className="flex flex-col items-center justify-center gap-3 text-sm font-semibold text-[#2f6f3f]">
             <a
               href="https://superbrain.edu.vn/privacy-policy/"
               target="_blank"

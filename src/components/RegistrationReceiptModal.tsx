@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Check, Clipboard, Copy, X, Calendar, MapPin, Phone, Award, Smile } from 'lucide-react';
+import { Check, X, MapPin } from 'lucide-react';
 import { Registration } from '../types';
+import voucherPreviewImage from '../../uploads/voucher-01.png';
 
 interface RegistrationReceiptModalProps {
   isOpen: boolean;
@@ -10,18 +11,7 @@ interface RegistrationReceiptModalProps {
 }
 
 export default function RegistrationReceiptModal({ isOpen, onClose, registration }: RegistrationReceiptModalProps) {
-  const [copied, setCopied] = useState(false);
-
   if (!isOpen || !registration) return null;
-
-  // Generate a mock code based on registration values
-  const voucherCode = `XANHSM-SPB-${registration.id.toUpperCase().split('-')[0] || '9843'}`;
-
-  const copyVoucher = () => {
-    navigator.clipboard.writeText(voucherCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <AnimatePresence>
@@ -57,47 +47,14 @@ export default function RegistrationReceiptModal({ isOpen, onClose, registration
           </div>
 
           {/* Form Receipt details sheet */}
-          <div className="p-5 sm:p-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
+          <div className="p-5 sm:p-6">
             
-            <p className="font-headline text-center text-on-surface font-extrabold text-sm sm:text-base">
-              CHÚC MỪNG PHỤ HUYNH: <span className="text-primary font-bold uppercase">{registration.parentName}</span>!
-            </p>
-
-            <p className="text-center text-xs text-on-surface-variant font-medium mt-1 leading-relaxed">
-              Dưới đây là mã giữ chỗ ưu đãi học bổng <strong className="text-primary">1.000.000 VNĐ</strong> cho bé <strong className="text-primary">{registration.childName}</strong>:
-            </p>
-
-            {/* Visual Voucher Ticket Card design */}
-            <div className="mt-5 relative overflow-hidden bg-radial from-orange-50 to-orange-100/60 rounded-xl border border-dashed border-primary/30 p-5 text-center shadow-inner">
-              
-              {/* Ticket Jagged Circles edges left and right */}
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-8 bg-white border-r border-[#e8e8ea] rounded-r-full"></div>
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-8 bg-white border-l border-[#e8e8ea] rounded-l-full"></div>
-
-              <div className="flex items-center justify-center gap-1.5 text-primary">
-                <Award className="h-5 w-5 animate-pulse" />
-                <span className="font-headline text-xs font-bold tracking-wider uppercase">
-                  Voucher Mầm Xanh Trí Tuệ
-                </span>
-              </div>
-
-              <div className="mt-2 text-2xl font-mono font-extrabold text-primary tracking-widest bg-white rounded-lg border border-primary/20 py-2.5 px-4 shadow-sm inline-flex items-center gap-2">
-                {voucherCode}
-                <button
-                  onClick={copyVoucher}
-                  className="p-1 rounded bg-[#f3f3f6] hover:bg-primary-container hover:text-white transition-colors cursor-pointer text-on-surface-variant"
-                  title="Copy Voucher Code"
-                >
-                  {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
-                </button>
-              </div>
-
-              <p className="text-[10px] font-bold text-on-surface-variant uppercase mt-3 tracking-wider">
-                Giá trị: Giảm 1 Triệu học phí trực tiếp
-              </p>
-              <p className="text-[9px] font-medium text-on-surface-variant/70 mt-0.5">
-                Mã Độc Quyền cho tài xế Xanh SM • Hạn chót: 31/08/2026
-              </p>
+            <div className="mt-5 overflow-hidden rounded-xl border border-primary/20 bg-[#fff7eb] shadow-inner">
+              <img
+                src={voucherPreviewImage}
+                alt="Voucher Mầm Xanh Trí Tuệ"
+                className="block h-auto w-full"
+              />
             </div>
 
             {/* Core tabular statistics metadata info */}
@@ -126,50 +83,20 @@ export default function RegistrationReceiptModal({ isOpen, onClose, registration
               </div>
             </div>
 
-            {/* Next step guidelines */}
-            <div className="mt-6 space-y-3 border-t border-[#f3f3f6] pt-5">
-              <h4 className="font-headline text-xs font-extrabold text-[#1a1c1e] uppercase tracking-wider">
-                📌 Hướng dẫn các bước tiếp theo:
-              </h4>
-
-              <ul className="space-y-2.5 text-xs text-on-surface-variant font-medium leading-relaxed">
-                <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold text-sm shrink-0">1.</span>
-                  <p>
-                    <strong>Chụp màn hình</strong> hoặc sao chép mã voucher <strong className="text-primary bg-orange-50 px-1 border border-primary/10 rounded">{voucherCode}</strong> này lại để lưu giữ.
-                  </p>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold text-sm shrink-0">2.</span>
-                  <p>
-                    Ban đào tạo cơ sở <strong>{registration.centerName}</strong> sẽ liên lạc trực tiếp cho Bác tài trong vòng 24h qua số điện thoại <strong>{registration.phoneNumber}</strong> để xếp lịch đánh giá năng lực tập trung cho con.
-                  </p>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold text-sm shrink-0">3.</span>
-                  <p>
-                    Khi mang bé đến học, Bác tài chỉ cần xuất trình <strong>ứng dụng Tài xế Xanh SM</strong> hoặc thẻ vật lý để xác minh và áp dụng giảm trừ 1 triệu vào học phí khóa học Bingo đầu tiên.
-                  </p>
-                </li>
-              </ul>
+            <div className="mt-6 rounded-xl border border-[#dcefe2] bg-[#f6fcf2] p-4 text-center">
+              <p className="font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f]">
+                Cơ sở <strong className="text-[#148144]">{registration.centerName}</strong> sẽ liên hệ trực tiếp cho Bác tài qua số điện thoại <strong className="text-[#148144]">{registration.phoneNumber}</strong> để tư vấn chương trình học!
+              </p>
             </div>
 
           </div>
 
-          <div className="bg-[#f9f9fc] border-t border-[#e8e8ea] px-6 py-4 flex flex-col sm:flex-row gap-3">
+          <div className="flex justify-center border-t border-[#e8e8ea] bg-[#f9f9fc] px-6 py-4">
             <button
               onClick={onClose}
-              className="flex-1 bg-secondary text-white font-headline font-bold text-sm py-3 rounded-xl hover:bg-secondary/90 transition-all text-center cursor-pointer shadow-sm active:scale-[0.98]"
+              className="w-full max-w-xs bg-secondary text-white font-headline font-bold text-sm py-3 rounded-xl hover:bg-secondary/90 transition-all text-center cursor-pointer shadow-sm active:scale-[0.98]"
             >
               Hoàn Thành
-            </button>
-            <button
-              onClick={() => {
-                window.print();
-              }}
-              className="sm:px-4 bg-white text-on-surface-variant border border-[#e2e2e5] font-headline font-bold text-xs py-3 rounded-xl hover:bg-secondary/5 transition-all text-center cursor-pointer"
-            >
-              In Phiếu Giữ Chỗ
             </button>
           </div>
 

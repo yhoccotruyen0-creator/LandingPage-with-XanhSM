@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Info, CheckCircle, Phone, ArrowRight, User, Baby, HelpCircle } from 'lucide-react';
+import sampleImage from '../../uploads/sample.png';
+import { ArrowRight, User, Baby, Phone } from 'lucide-react';
 import { SuperbrainCenter, Registration } from '../types';
 import { motion } from 'motion/react';
-
-const AGE_GROUPS = [
-  "3 - 5 tuổi",
-  "6 - 8 tuổi",
-  "9 - 12 tuổi"
-];
 
 interface RegistrationSectionProps {
   centers: SuperbrainCenter[];
@@ -78,7 +73,7 @@ export default function RegistrationSection({
     const errors: Record<string, string> = {};
     if (!parentName.trim()) errors.parentName = "Vui lòng nhập tên phụ huynh";
     if (!childName.trim()) errors.childName = "Vui lòng nhập tên bé";
-    if (!childAge) errors.childAge = "Vui lòng chọn độ tuổi";
+    if (!childAge.trim()) errors.childAge = "Vui lòng nhập độ tuổi";
     if (!phoneNumber.trim()) {
       errors.phoneNumber = "Vui lòng nhập số điện thoại";
     } else if (!/^[0-9+ ]{9,13}$/.test(phoneNumber.trim())) {
@@ -123,81 +118,44 @@ export default function RegistrationSection({
   };
 
   return (
-    <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-4">
-      <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
+    <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-2 sm:py-4">
+      <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
         
-        {/* Left Column: Parental benefits sheet */}
-        <div className="flex h-full flex-col gap-6 rounded-2xl border border-[#dcefe2] bg-white p-6 shadow-sm sm:p-8">
-          <div className="flex items-center gap-2.5 text-[#148144]">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
-              <Info className="h-5 w-5" />
-            </div>
-            <h2 className="font-headline text-lg sm:text-xl font-bold text-[#148144]">
-              Thông tin hỗ trợ phụ huynh
-            </h2>
+        {/* Left Column: Usage terms image */}
+        <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-2xl border border-[#dcefe2] bg-white p-4 shadow-sm sm:min-h-[520px] sm:p-6">
+          <div className="flex min-h-0 flex-1 items-center justify-center">
+            <img
+              src={sampleImage}
+              alt="Thông tin điều kiện sử dụng chương trình"
+              className="max-h-full w-full object-contain"
+            />
           </div>
 
-          <div className="rounded-xl border border-[#bfe4c8] bg-[#f6fcf2] p-5 sm:p-6">
-            <h3 className="font-headline font-bold text-[#123d2a] mb-3 text-sm">
-              Mỗi suất đăng ký được duyệt bao gồm:
-            </h3>
-            
-            <ul className="space-y-4">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle className="h-4.5 w-4.5 text-[#148144] shrink-0 mt-0.5" />
-                <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium leading-relaxed">
-                  Ưu đãi ngay <strong className="text-[#148144]">1.000.000 VNĐ</strong> học phí trực tiếp.
-                </p>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle className="h-4.5 w-4.5 text-[#148144] shrink-0 mt-0.5" />
-                <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium leading-relaxed">
-                  Tặng kèm bộ Giáo cụ Soroban nhập khẩu cao cấp.
-                </p>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle className="h-4.5 w-4.5 text-[#148144] shrink-0 mt-0.5" />
-                <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium leading-relaxed">
-                  Miễn phí 100% buổi đánh giá khả năng tập trung toàn diện cho trẻ (30 phút).
-                </p>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-headline text-sm font-bold text-[#123d2a] mb-1">Địa điểm học tập:</p>
-            <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] leading-relaxed font-semibold">
-              Hỗ trợ học và giữ chỗ tại bất kỳ cơ sở nào trong số các cơ sở được Superbrain tuyển chọn nâng cấp khóa học.
-            </p>
-          </div>
-
-          <div className="flex-1" />
-
-          <div className="flex items-center gap-3.5 pt-5 border-t border-[#dcefe2]">
+          <div className="mt-5 flex items-start gap-3 border-t border-[#dcefe2] pt-5 sm:items-center sm:gap-3.5">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <Phone className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-sans text-xs font-semibold text-[#2f6f3f]">Hotline Tổng đài Superbrain hỗ trợ:</p>
-              <p className="font-headline text-sm sm:text-base font-extrabold text-[#148144]">
-                1900 636 079 <span className="font-sans text-xs font-semibold text-[#2f6f3f] ml-1">(8:00 - 18:00 hằng ngày)</span>
+              <p className="font-sans text-xs font-semibold text-[#2f6f3f]">Liên hệ hỗ trợ</p>
+              <p className="font-headline text-sm font-extrabold leading-snug text-[#148144] sm:text-base">
+                Hotline: 09 188 188 00
               </p>
             </div>
           </div>
         </div>
 
         {/* Right Column: Registration submission Form panel */}
-        <div className="relative overflow-hidden rounded-2xl border border-[#bfe4c8] bg-white p-6 shadow-xl shadow-[#148144]/10 sm:p-8">
+        <div className="relative overflow-hidden rounded-2xl border border-[#bfe4c8] bg-white p-5 shadow-xl shadow-[#148144]/10 sm:p-8">
           
           {/* Form Banner highlight */}
           <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#8bc53f] to-[#148144]"></div>
 
           <div className="text-center mb-6">
             <h2 className="font-headline text-xl sm:text-2xl font-bold text-[#148144]">
-              Đăng Ký Giữ Suất
+              Hẹn lịch tư vấn
             </h2>
             <p className="font-sans text-xs sm:text-sm text-[#2f6f3f] font-medium mt-1">
-              Vui lòng cung cấp thông tin bên dưới để được hệ thống duyệt voucher tự động.
+              Vui lòng điền thông tin để nhận voucher và đặt lịch tư vấn
             </p>
           </div>
 
@@ -213,7 +171,7 @@ export default function RegistrationSection({
                 <input
                   type="text"
                   placeholder="Nhập họ và tên phụ huynh..."
-                  className={`w-full pl-9 pr-3 py-2.5 rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full pl-9 pr-3 py-3 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:py-2.5 sm:text-sm ${
                     formErrors.parentName ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={parentName}
@@ -240,7 +198,7 @@ export default function RegistrationSection({
                 <input
                   type="text"
                   placeholder="Nhập họ và tên cháu bé..."
-                  className={`w-full pl-9 pr-3 py-2.5 rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full pl-9 pr-3 py-3 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:py-2.5 sm:text-sm ${
                     formErrors.childName ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={childName}
@@ -265,8 +223,13 @@ export default function RegistrationSection({
                 <label className="flex items-center gap-1.5 font-headline text-xs sm:text-sm font-bold text-[#123d2a]">
                   Độ Tuổi <span className="text-red-500 font-extrabold">*</span>
                 </label>
-                <select
-                  className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min="1"
+                  max="18"
+                  placeholder="Nhập độ tuổi..."
+                  className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:h-[41px] sm:py-2.5 sm:text-sm ${
                     formErrors.childAge ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={childAge}
@@ -276,12 +239,7 @@ export default function RegistrationSection({
                       setFormErrors(prev => ({ ...prev, childAge: '' }));
                     }
                   }}
-                >
-                  <option value="">Chọn</option>
-                  {AGE_GROUPS.map(ag => (
-                    <option key={ag} value={ag}>{ag}</option>
-                  ))}
-                </select>
+                />
                 {formErrors.childAge && (
                   <span className="text-[10px] font-bold text-error mt-0.5">{formErrors.childAge}</span>
                 )}
@@ -295,7 +253,7 @@ export default function RegistrationSection({
                 <input
                   type="tel"
                   placeholder="Nhập số điện thoại..."
-                  className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:h-[41px] sm:py-2.5 sm:text-sm ${
                     formErrors.phoneNumber ? 'border-error focus:border-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={phoneNumber}
@@ -319,7 +277,7 @@ export default function RegistrationSection({
                 Tỉnh / Thành phố <span className="text-red-500 font-extrabold">*</span>
               </label>
               <select
-                className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:h-[41px] sm:py-2.5 sm:text-sm ${
                   formErrors.province ? 'border-error focus:border-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                 }`}
                 value={province}
@@ -347,7 +305,7 @@ export default function RegistrationSection({
               </label>
               <select
                 disabled={!province}
-                className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed sm:h-[41px] sm:py-2.5 sm:text-sm ${
                   formErrors.centerId ? 'border-error focus:border-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                 }`}
                 value={centerId}
