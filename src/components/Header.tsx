@@ -75,14 +75,14 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
 
           <button
             onClick={() => onScrollToSection('dia-diem')}
-            className="flex min-h-9 items-center justify-center rounded-lg border border-[#159650]/20 px-3 py-2 text-center font-headline text-xs font-bold leading-tight text-[#137c44] transition-colors hover:bg-[#eaf8ef] sm:min-h-10 sm:px-4 sm:text-sm lg:hidden"
+            className="flex min-h-9 flex-1 items-center justify-center rounded-lg border border-[#159650]/20 px-3 py-2 text-center font-headline text-xs font-bold leading-tight text-[#137c44] transition-colors hover:bg-[#eaf8ef] sm:min-h-10 sm:px-4 sm:text-sm lg:hidden"
           >
             Tra cứu cơ sở
           </button>
 
           <button 
             onClick={() => onScrollToSection('dang-ky')}
-            className="rounded-lg bg-[#14934f] px-3 py-2.5 font-headline text-xs font-bold text-white shadow-[0_10px_24px_rgba(20,147,79,0.22)] transition-all hover:bg-[#0f7f42] active:scale-95 sm:px-6 sm:text-base"
+            className="flex min-h-9 flex-1 items-center justify-center rounded-lg bg-[#14934f] px-3 py-2 text-center font-headline text-xs font-bold text-white shadow-[0_10px_24px_rgba(20,147,79,0.22)] transition-all hover:bg-[#0f7f42] active:scale-95 sm:min-h-10 sm:px-6 sm:text-base"
           >
             Đặt lịch tư vấn
           </button>
