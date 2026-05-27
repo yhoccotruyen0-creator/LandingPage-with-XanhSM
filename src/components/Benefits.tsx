@@ -78,7 +78,7 @@ export default function Benefits() {
         </motion.p>
       </div>
 
-      <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-10">
+      <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-7 sm:grid-cols-3 sm:gap-9 lg:mt-10">
         {programImages.map((image, index) => (
           <motion.div
             key={image.id}
