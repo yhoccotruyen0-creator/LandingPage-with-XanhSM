@@ -117,21 +117,21 @@ export default function RegistrationSection({
   };
 
   return (
-    <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-4">
-      <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
+    <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-2 sm:py-4">
+      <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
         
         {/* Left Column: Parental benefits sheet */}
-        <div className="flex h-full flex-col gap-6 rounded-2xl border border-[#dcefe2] bg-white p-6 shadow-sm sm:p-8">
+        <div className="flex h-full flex-col gap-5 rounded-2xl border border-[#dcefe2] bg-white p-5 shadow-sm sm:gap-6 sm:p-8">
           <div className="flex items-center gap-2.5 text-[#148144]">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <Info className="h-5 w-5" />
             </div>
-            <h2 className="font-headline text-lg sm:text-xl font-bold text-[#148144]">
+            <h2 className="font-headline text-lg sm:text-xl font-bold leading-tight text-[#148144]">
               Thông tin hỗ trợ phụ huynh
             </h2>
           </div>
 
-          <div className="rounded-xl border border-[#bfe4c8] bg-[#f6fcf2] p-5 sm:p-6">
+          <div className="rounded-xl border border-[#bfe4c8] bg-[#f6fcf2] p-4 sm:p-6">
             <h3 className="font-headline font-bold text-[#123d2a] mb-3 text-sm">
               Mỗi suất đăng ký được duyệt bao gồm:
             </h3>
@@ -161,21 +161,21 @@ export default function RegistrationSection({
 
           <div className="flex-1" />
 
-          <div className="flex items-center gap-3.5 pt-5 border-t border-[#dcefe2]">
+          <div className="flex items-start gap-3 pt-5 border-t border-[#dcefe2] sm:items-center sm:gap-3.5">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#e9f8ed] text-[#148144]">
               <Phone className="h-5 w-5" />
             </div>
             <div>
               <p className="font-sans text-xs font-semibold text-[#2f6f3f]">Hotline Tổng đài Superbrain hỗ trợ:</p>
-              <p className="font-headline text-sm sm:text-base font-extrabold text-[#148144]">
-                1900 636 079 <span className="font-sans text-xs font-semibold text-[#2f6f3f] ml-1">(8:00 - 18:00 hằng ngày)</span>
+              <p className="font-headline text-sm sm:text-base font-extrabold leading-snug text-[#148144]">
+                1900 636 079 <span className="block font-sans text-xs font-semibold text-[#2f6f3f] sm:ml-1 sm:inline">(8:00 - 18:00 hằng ngày)</span>
               </p>
             </div>
           </div>
         </div>
 
         {/* Right Column: Registration submission Form panel */}
-        <div className="relative overflow-hidden rounded-2xl border border-[#bfe4c8] bg-white p-6 shadow-xl shadow-[#148144]/10 sm:p-8">
+        <div className="relative overflow-hidden rounded-2xl border border-[#bfe4c8] bg-white p-5 shadow-xl shadow-[#148144]/10 sm:p-8">
           
           {/* Form Banner highlight */}
           <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#8bc53f] to-[#148144]"></div>
@@ -201,7 +201,7 @@ export default function RegistrationSection({
                 <input
                   type="text"
                   placeholder="Nhập họ và tên phụ huynh..."
-                  className={`w-full pl-9 pr-3 py-2.5 rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full pl-9 pr-3 py-3 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:py-2.5 sm:text-sm ${
                     formErrors.parentName ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={parentName}
@@ -228,7 +228,7 @@ export default function RegistrationSection({
                 <input
                   type="text"
                   placeholder="Nhập họ và tên cháu bé..."
-                  className={`w-full pl-9 pr-3 py-2.5 rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full pl-9 pr-3 py-3 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:py-2.5 sm:text-sm ${
                     formErrors.childName ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={childName}
@@ -259,7 +259,7 @@ export default function RegistrationSection({
                   min="1"
                   max="18"
                   placeholder="Nhập độ tuổi..."
-                  className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:h-[41px] sm:py-2.5 sm:text-sm ${
                     formErrors.childAge ? 'border-error focus:border-error focus:ring-1 focus:ring-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={childAge}
@@ -283,7 +283,7 @@ export default function RegistrationSection({
                 <input
                   type="tel"
                   placeholder="Nhập số điện thoại..."
-                  className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                  className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:h-[41px] sm:py-2.5 sm:text-sm ${
                     formErrors.phoneNumber ? 'border-error focus:border-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                   }`}
                   value={phoneNumber}
@@ -307,7 +307,7 @@ export default function RegistrationSection({
                 Tỉnh / Thành phố <span className="text-red-500 font-extrabold">*</span>
               </label>
               <select
-                className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all ${
+                className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all sm:h-[41px] sm:py-2.5 sm:text-sm ${
                   formErrors.province ? 'border-error focus:border-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                 }`}
                 value={province}
@@ -335,7 +335,7 @@ export default function RegistrationSection({
               </label>
               <select
                 disabled={!province}
-                className={`w-full px-3 py-2.5 h-[41px] rounded-xl border bg-[#f9f9fc] font-sans text-sm font-semibold outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                className={`w-full px-3 py-3 h-12 rounded-xl border bg-[#f9f9fc] font-sans text-base font-semibold outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed sm:h-[41px] sm:py-2.5 sm:text-sm ${
                   formErrors.centerId ? 'border-error focus:border-error' : 'border-[#bfe4c8] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]'
                 }`}
                 value={centerId}

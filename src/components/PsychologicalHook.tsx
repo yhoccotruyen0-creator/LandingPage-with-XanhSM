@@ -32,12 +32,12 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-5xl font-headline text-2xl font-extrabold leading-tight text-on-background sm:text-3xl md:text-4xl"
+        className="mx-auto max-w-5xl font-headline text-2xl font-extrabold leading-tight text-on-background sm:text-3xl lg:text-4xl"
       >
         Mỗi chuyến xe bác tài lăn bánh là một lần trăn trở...
       </motion.h2>
 
-      <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 md:grid-cols-3 md:gap-5">
         {cards.map((card, index) => (
           <motion.div
             key={card.id}
@@ -46,7 +46,7 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             whileHover={{ y: -4, shadow: "0 10px 25px -5px rgba(0,0,0,0.05)" }}
-            className="flex min-h-48 flex-col items-center justify-center gap-5 rounded-2xl border border-[#e8e8ea] bg-white p-6 text-center shadow-sm transition-all"
+            className="flex min-h-40 flex-col items-center justify-center gap-4 rounded-2xl border border-[#e8e8ea] bg-white p-5 text-center shadow-sm transition-all sm:min-h-48 sm:gap-5 sm:p-6"
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#e9f8ed] to-[#d9f2e2] ring-4 ring-[#edf9f1]">
               {card.icon}
@@ -63,7 +63,7 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-8 rounded-2xl border border-[#b9d7b7] bg-[#f5fbef] p-5 text-left shadow-sm"
+        className="mt-6 rounded-2xl border border-[#b9d7b7] bg-[#f5fbef] p-4 text-left shadow-sm sm:mt-8 sm:p-5"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#158a16] text-white shadow-sm">
@@ -87,7 +87,7 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-8 flex flex-col items-center justify-center gap-3 rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] p-4 text-center shadow-sm sm:flex-row"
+        className="mt-6 flex flex-col items-center justify-center gap-3 rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] p-4 text-center shadow-sm sm:mt-8 sm:flex-row"
       >
         <p className="font-headline text-sm font-bold text-[#148144] sm:text-base">
           Ba yên tâm trên mọi cung đường - Superbrain giúp con tự tin mỗi ngày.
