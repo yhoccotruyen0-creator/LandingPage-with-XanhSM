@@ -26,7 +26,7 @@ export default function PsychologicalHook({ onRegisterClick }: PsychologicalHook
   ];
 
   return (
-    <section className="mx-auto max-w-5xl text-center">
+    <section id="loi-ich" className="scroll-mt-24 mx-auto max-w-5xl text-center">
       <motion.h2 
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}

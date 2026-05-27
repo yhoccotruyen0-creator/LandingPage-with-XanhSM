@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, Clock, Play } from 'lucide-react';
 
+const HERO_VIDEO_URL = 'video-demo.mp4';
+
 interface HeroProps {
   onRegisterClick: () => void;
 }
@@ -80,17 +82,28 @@ export default function Hero({ onRegisterClick }: HeroProps) {
         {/* Right Column: Imagery with nice overlay text or gradient shape */}
         <div className="relative lg:w-[55%]">
           <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border-[10px] border-white bg-[#dff4e6] shadow-[0_24px_42px_rgba(27,96,52,0.22)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,#108848_0_8%,transparent_20%),radial-gradient(circle_at_84%_18%,#e4df48_0_9%,transparent_20%),radial-gradient(circle_at_50%_48%,#8bd234_0_20%,transparent_34%),radial-gradient(circle_at_18%_78%,#ffd45d_0_8%,transparent_19%),linear-gradient(135deg,#e9fff0_0%,#fbfff7_45%,#b6e061_100%)]" />
-            <div className="absolute inset-x-[18%] top-[28%] h-[18%] rounded-full bg-[#43aa3d]/70 blur-sm" />
-            <div className="absolute inset-x-[31%] top-[50%] h-[16%] rounded-full bg-[#b4bf24]/80 blur-sm" />
-            <button
-              type="button"
-              aria-label="Phát video giới thiệu"
-              className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-lg bg-[#ffd923] px-4 py-2 font-headline text-2xl font-extrabold text-[#171717] shadow-lg transition-transform hover:scale-105 sm:text-3xl"
-            >
-              <Play className="h-6 w-6 fill-current" />
-              link VDO
-            </button>
+            {HERO_VIDEO_URL ? (
+              <video
+                className="h-full w-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                poster=""
+              >
+                <source src={HERO_VIDEO_URL} type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+              </video>
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,#108848_0_8%,transparent_20%),radial-gradient(circle_at_84%_18%,#e4df48_0_9%,transparent_20%),radial-gradient(circle_at_50%_48%,#8bd234_0_20%,transparent_34%),radial-gradient(circle_at_18%_78%,#ffd45d_0_8%,transparent_19%),linear-gradient(135deg,#e9fff0_0%,#fbfff7_45%,#b6e061_100%)]" />
+                <div className="absolute inset-x-[18%] top-[28%] h-[18%] rounded-full bg-[#43aa3d]/70 blur-sm" />
+                <div className="absolute inset-x-[31%] top-[50%] h-[16%] rounded-full bg-[#b4bf24]/80 blur-sm" />
+                <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-lg bg-[#ffd923] px-4 py-2 font-headline text-2xl font-extrabold text-[#171717] shadow-lg sm:text-3xl">
+                  <Play className="h-6 w-6 fill-current" />
+                  link VDO
+                </div>
+              </>
+            )}
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-3 text-[#11823d]">
