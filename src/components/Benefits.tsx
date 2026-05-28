@@ -111,13 +111,13 @@ export default function Benefits() {
             whileHover={{ scale: 1.01 }}
             className="flex min-h-32 flex-col items-center justify-center gap-2 border border-[#dcefe2] bg-white p-4 text-center shadow-[0_10px_24px_rgba(18,91,52,0.08)] transition-all sm:min-h-36 sm:gap-3 sm:p-5"
           >
-            <div className="text-[#c9dc15]">
+            <div className="text-[#8fc722]">
               {stat.icon}
             </div>
-            <p className="font-headline text-lg font-extrabold leading-none text-[#a7cf2a] sm:text-2xl">
+            <p className="font-headline text-lg font-extrabold leading-none text-[#8fc722] sm:text-2xl">
               {stat.value}
             </p>
-            <p className="font-sans text-xs font-bold leading-snug text-[#2f6f3f] sm:text-sm">
+            <p className="font-sans text-xs font-extrabold leading-snug text-[#1f6b3a] sm:text-sm">
               {stat.label}
             </p>
           </motion.div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import chongMatImage from '../../uploads/chong-mat.jpg';
 import otoImage from '../../uploads/oto.jpg';
@@ -14,17 +13,17 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
     {
       id: "pain-card-1",
       icon: tymImage,
-      text: "Mong muốn đem điều tốt nhất dành cho con"
+      text: <>Mong muốn điều tốt&nbsp;đẹp nhất dành cho&nbsp;con</>
     },
     {
       id: "pain-card-2",
       icon: chongMatImage,
-      text: "Con kém tập trung, học trước quên sau, sợ môn Toán?"
+      text: <>Con kém tập trung, học&nbsp;trước quên&nbsp;sau, sợ môn&nbsp;Toán?</>
     },
     {
       id: "pain-card-3",
       icon: otoImage,
-      text: "Ba bận rộn, không có thời gian kèm con học mỗi ngày?"
+      text: <>Ba bận rộn, không có thời&nbsp;gian kèm con&nbsp;học mỗi&nbsp;ngày?</>
     }
   ];
 
@@ -59,7 +58,7 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
                 className="h-full w-full object-contain"
               />
             </div>
-            <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f]">
+            <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f] [text-wrap:balance]">
               {card.text}
             </p>
           </motion.div>
@@ -71,22 +70,18 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-6 rounded-2xl border border-[#b9d7b7] bg-[#f5fbef] p-4 text-left shadow-sm sm:mt-8 sm:p-5"
+        className="mt-6 rounded-2xl border border-[#b9d7b7] bg-[#f5fbef] p-4 text-center shadow-sm sm:mt-8 sm:p-5"
       >
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#158a16] text-white shadow-sm">
-            <Sparkles className="h-5 w-5" />
-          </div>
-          <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <h3 className="font-headline text-base font-extrabold text-[#137c44]">
-                Chương trình Toán trí tuệ Superbrain
-              </h3>
-            </div>
-            <p className="mt-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
-              Toán trí tuệ Superbrain giúp trẻ phát triển trí não cho một cách toàn diện và cải thiện khả năng <strong>TẬP TRUNG</strong> - <strong>GHI NHỚ</strong> - <strong>PHẢN XẠ</strong> - <strong>TỰ TIN</strong>.
-            </p>
-          </div>
+        <div className="mx-auto max-w-5xl">
+          <h3 className="font-headline text-lg font-black text-[#137c44] sm:text-xl">
+            Chương trình Toán trí tuệ Superbrain
+          </h3>
+          <p className="mt-2 font-sans text-sm font-semibold leading-relaxed text-[#2f6f3f] sm:text-base">
+            Toán trí tuệ Superbrain giúp trẻ phát triển trí não cho một cách toàn diện và cải thiện khả năng
+            <span className="mt-1 block font-extrabold text-[#1f6b3a]">
+              TẬP TRUNG - GHI NHỚ - PHẢN XẠ - TỰ TIN.
+            </span>
+          </p>
         </div>
       </motion.div>
 

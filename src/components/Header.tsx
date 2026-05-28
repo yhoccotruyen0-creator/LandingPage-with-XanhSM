@@ -1,5 +1,4 @@
 import React from 'react';
-import { BookOpen } from 'lucide-react';
 import logoUrl from '../../uploads/logo.png';
 
 interface HeaderProps {
@@ -94,7 +93,6 @@ export default function Header({ onScrollToSection, onOpenHistory, registrationC
             rel="noopener noreferrer"
             className="flex min-h-9 w-full max-w-[22rem] items-center justify-center gap-1.5 rounded-lg border border-[#159650]/20 bg-white px-3 py-2 text-center font-headline text-[11px] font-bold leading-tight text-[#137c44] transition-colors hover:bg-[#eaf8ef] sm:min-h-10 sm:text-xs lg:hidden"
           >
-            <BookOpen className="h-3.5 w-3.5 shrink-0" />
             <span className="min-w-0 truncate">Chương trình Toán trí tuệ Superbrain</span>
           </a>
         </div>

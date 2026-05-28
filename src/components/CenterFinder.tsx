@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Search, MapPin, Phone, ArrowRight, ChevronsDown, ChevronsUp, Loader2, AlertCircle, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { Search, MapPin, Phone, ArrowRight, ChevronsDown, ChevronsUp, Loader2, AlertCircle, ChevronLeft, ChevronRight, ChevronDown, MessageCircle } from 'lucide-react';
 import { SuperbrainCenter } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
+
+const FANPAGE_URL = 'https://www.facebook.com/superbrainvietnam';
+
+const getTelHref = (hotline: string) => 'tel:' + hotline.replace(/[^\d+]/g, '');
 
 interface CenterFinderProps {
   centers: SuperbrainCenter[];
@@ -109,14 +113,14 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
     >
       <div className="flex flex-col gap-3">
         
-        {/* Header: Name & Badge */}
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-          <h3 className="font-headline font-bold text-[#123d2a] text-base sm:text-lg group-hover:text-[#148144] transition-colors">
-            {center.name}
-          </h3>
-          <span className="w-fit shrink-0 bg-[#e9f8ed] text-[#148144] text-[10px] font-extrabold px-2.5 py-1 rounded uppercase tracking-widest border border-[#bfe4c8]">
+        {/* Header: Province & Name */}
+        <div className="flex min-w-0 flex-col items-start gap-2">
+          <span className="max-w-full shrink-0 rounded-xl border border-[#bfe4c8] bg-[#e9f8ed] px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#148144] sm:text-xs">
             {center.province}
           </span>
+          <h3 className="w-full font-headline text-base font-bold leading-snug text-[#123d2a] transition-colors group-hover:text-[#148144] sm:text-lg">
+            {center.name}
+          </h3>
         </div>
 
         {/* Meta rows */}
@@ -130,7 +134,7 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
 
           <div className="flex items-center gap-2.5 text-sm font-medium text-[#2f6f3f]">
             <Phone className="h-4 w-4 text-[#148144] shrink-0" />
-            <span className="font-mono text-xs sm:text-sm font-semibold text-[#123d2a]">{center.hotline}</span>
+            <span className="font-sans text-xs font-bold tracking-wide text-[#123d2a] sm:text-sm">{center.hotline}</span>
           </div>
         </div>
 
@@ -146,115 +150,88 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
         
-        <button
-          onClick={() => handleCall(center.id, center.name, center.hotline)}
-          disabled={dialingId === center.id}
-          className="w-full bg-white text-[#2f6f3f] border border-[#bfe4c8] font-headline font-semibold text-xs py-2 rounded-xl hover:bg-[#f6fcf2] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-        >
-          <Phone className="h-3.5 w-3.5 text-[#2f6f3f]" />
-          {dialingId === center.id ? 'Đang kết nối...' : 'Gọi điện tư vấn'}
-        </button>
+        <div className="grid grid-cols-2 gap-2">
+          <a
+            href={getTelHref(center.hotline)}
+            className="flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-[#bfe4c8] bg-white px-2 py-2 text-center font-headline text-[11px] font-semibold leading-tight text-[#2f6f3f] transition-all hover:bg-[#f6fcf2] sm:text-xs"
+          >
+            <Phone className="h-3.5 w-3.5 shrink-0 text-[#2f6f3f]" />
+            <span>Gọi điện tư vấn</span>
+          </a>
+
+          <a
+            href={FANPAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-[#bfe4c8] bg-white px-2 py-2 text-center font-headline text-[11px] font-semibold leading-tight text-[#2f6f3f] transition-all hover:bg-[#f6fcf2] sm:text-xs"
+          >
+            <MessageCircle className="h-3.5 w-3.5 shrink-0 text-[#2f6f3f]" />
+            <span>Liên hệ fanpage</span>
+          </a>
+        </div>
       </div>
 
     </motion.div>
 
   );
 
-  // Handle dial call simulation
-  const [dialingId, setDialingId] = useState<string | null>(null);
-  const handleCall = (centerId: string, name: string, hotline: string) => {
-    setDialingId(centerId);
-    setTimeout(() => {
-      setDialingId(null);
-      // Fallback virtual reaction
-      alert(`Đang kết nối cuộc gọi tư vấn miễn phí tới ${name} qua tổng đài: ${hotline}\nTổng đài hoạt động từ 8:00 đến 18:00 hằng ngày.`);
-    }, 400);
-  };
 
   return (
     <section id="dia-diem" className="scroll-mt-20 w-full flex flex-col gap-6 sm:gap-8">
       
       {/* Header and description of location locator */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-start gap-2.5 sm:items-center">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#148144] text-white shadow-md shadow-[#148144]/15">
+      <div className="flex flex-col items-center gap-2 text-center">
+        <div className="flex items-center justify-center gap-2.5">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#148144] text-white shadow-md shadow-[#148144]/15 sm:rounded-lg">
             <MapPin className="h-4 w-4" />
           </div>
           <h2 className="font-headline text-xl font-bold leading-tight text-[#148144] md:text-2xl">
             Hệ thống cơ sở Superbrain đồng hành ({centers.length} cơ sở)
           </h2>
         </div>
-        <p className="font-sans text-sm sm:text-base text-[#2f6f3f] font-medium">
+        <p className="max-w-4xl font-sans text-sm font-medium text-[#2f6f3f] sm:text-base">
           Tìm địa điểm học tập thích hợp gần nhà hoặc vị trí thường di chuyển để tiện việc đưa đón trẻ.
         </p>
       </div>
 
       {/* Area filter block */}
-      <div className="rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6 flex flex-col gap-4">
+      <div className="flex flex-col gap-2.5 rounded-2xl border border-[#dcefe2] bg-[#f6fcf2] px-4 py-4 shadow-sm transition-shadow sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         
-        {/* Search header container */}
-        <div className="flex items-center">
-          <h3 className="font-headline text-sm font-bold tracking-wider text-[#148144] uppercase whitespace-nowrap">
+        <div className="grid gap-3 lg:grid-cols-[max-content_minmax(360px,520px)_minmax(420px,1fr)] lg:items-center">
+          <h3 className="font-headline text-sm font-bold uppercase tracking-wider text-[#148144]">
             BỘ LỌC KHU VỰC NHANH
           </h3>
-        </div>
-
-        {/* Tỉnh / Thành phố quick list tabs */}
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] lg:items-end">
-          <div className="flex min-w-0 flex-col gap-2">
-            <div className="flex items-center justify-between gap-3 sm:block">
-              <p className="text-xs font-bold text-[#2f6f3f] uppercase tracking-wider">
-                Tỉnh / Thành phố
-              </p>
-
-              <div className="relative min-w-0 flex-1 sm:hidden">
-                <select
-                  value={selectedProvince}
-                  onChange={(event) => setSelectedProvince(event.target.value)}
-                  className="w-full appearance-none rounded-xl border border-[#9fd7aa] bg-white py-2 pl-3 pr-11 font-sans text-xs font-extrabold text-[#148144] outline-none focus:border-[#148144] focus:ring-1 focus:ring-[#148144]"
-                  aria-label="Chọn tỉnh hoặc thành phố"
-                >
-                  {provinces.map(prov => (
-                    <option key={`prov-option-${prov}`} value={prov}>
-                      {prov} ({provinceCounts[prov] || 0})
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#148144]" />
-              </div>
-            </div>
-            
-            {/* Scrollable container for chips */}
-            <div className="hidden gap-2 overflow-x-auto pb-1 custom-scrollbar sm:flex">
-              {provinces.map(prov => {
-                const count = provinceCounts[prov] || 0;
-                const isSelected = selectedProvince.toLowerCase() === prov.toLowerCase();
-                return (
-                  <button
-                    key={`prov-chip-${prov}`}
-                    onClick={() => setSelectedProvince(prov)}
-                    className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 shadow-sm cursor-pointer border ${
-                      isSelected
-                        ? "bg-[#148144] text-white border-[#148144] scale-102"
-                        : "bg-white text-[#185c34] border-[#bfe4c8] hover:border-[#148144]/60 hover:text-[#148144]"
-                    }`}
-                  >
-                    {prov} ({count})
-                  </button>
-                );
-              })}
-            </div>
-          </div>
 
           <div className="relative min-w-0">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#148144] text-sm h-4.5 w-4.5" />
+            <Search className="absolute left-3.5 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-sm text-[#148144]" />
             <input
               type="text"
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#9fd7aa] bg-white text-sm outline-none focus:border-[#148144] focus:ring-1 focus:ring-[#148144] transition-all font-sans font-semibold placeholder:text-[#7fae82]"
+              className="w-full rounded-xl border border-[#9fd7aa] bg-white py-2.5 pl-10 pr-4 font-sans text-sm font-semibold outline-none transition-all placeholder:text-[#7fae82] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]"
               placeholder="Nhập tên cơ sở, quận huyện hoặc tên đường..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+          </div>
+
+          <div className="flex min-w-0 items-center gap-2">
+            <label className="shrink-0 font-headline text-sm font-bold uppercase tracking-wider text-[#148144]">
+              Chọn Tỉnh/Thành phố
+            </label>
+            <div className="relative min-w-0 flex-1">
+              <select
+                value={selectedProvince}
+                onChange={(event) => setSelectedProvince(event.target.value)}
+                className="w-full appearance-none rounded-xl border border-[#9fd7aa] bg-white py-2.5 pl-4 pr-11 font-sans text-sm font-extrabold text-[#148144] outline-none transition-all focus:border-[#148144] focus:ring-1 focus:ring-[#148144]"
+                aria-label="Chọn tỉnh hoặc thành phố"
+              >
+                {provinces.map(prov => (
+                  <option key={`prov-option-${prov}`} value={prov}>
+                    {prov} ({provinceCounts[prov] || 0} cơ sở)
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#148144]" />
+            </div>
           </div>
         </div>
 

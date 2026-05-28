@@ -42,7 +42,7 @@ export default function RegistrationReceiptModal({ isOpen, onClose, registration
               Đăng Ký Thành Công!
             </h3>
             <p className="text-xs sm:text-sm text-white/90 mt-1 font-semibold">
-              Hệ thống đã nhận thông tin giữ suất ưu tiên của Bác tài!
+              Hệ thống đã nhận thông tin đăng ký của Bác tài!
             </p>
           </div>
 
@@ -65,7 +65,7 @@ export default function RegistrationReceiptModal({ isOpen, onClose, registration
               </div>
               <div className="grid grid-cols-3 border-b border-[#e8e8ea] p-3">
                 <span className="font-headline font-bold text-on-surface-variant">Số ĐT Bác tài:</span>
-                <span className="col-span-2 font-mono font-semibold text-on-surface text-right">{registration.phoneNumber}</span>
+                <span className="col-span-2 font-sans font-bold tracking-wide text-on-surface text-right">{registration.phoneNumber}</span>
               </div>
               <div className="grid grid-cols-3 border-b border-[#e8e8ea] p-3">
                 <span className="font-headline font-bold text-on-surface-variant">Cơ sở đăng ký:</span>

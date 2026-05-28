@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import sampleImage from '../../uploads/sample.png';
-import { ArrowRight, User, Baby, Phone } from 'lucide-react';
+import { ArrowRight, User, Baby, Phone, Star } from 'lucide-react';
 import { SuperbrainCenter, Registration } from '../types';
 import { motion } from 'motion/react';
 
@@ -117,18 +116,46 @@ export default function RegistrationSection({
     }
   };
 
+  const usageTerms = [
+    <>Ưu đãi <strong className="font-extrabold text-[#148144]">1.000.000 VNĐ</strong> học phí khóa học Bingo đầu tiên tại các cơ&nbsp;sở đồng&nbsp;hành cùng Superbrain.</>,
+    <>Áp dụng cho học viên mới đăng ký <span className="font-extrabold">(chưa&nbsp;từng học tại Superbrain).</span></>,
+    <>Không quy đổi thành tiền&nbsp;mặt và không áp&nbsp;dụng đồng&nbsp;thời với các chương&nbsp;trình ưu&nbsp;đãi khác.</>,
+    <>Vui lòng mang theo voucher khi đến đăng&nbsp;ký.</>,
+    <>Mỗi voucher chỉ áp&nbsp;dụng cho 01 lần đăng&nbsp;ký của 01 học&nbsp;viên.</>
+  ];
+
   return (
     <section id="dang-ky" className="scroll-mt-20 w-full max-w-7xl mx-auto py-2 sm:py-4">
       <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
         
-        {/* Left Column: Usage terms image */}
-        <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-2xl border border-[#dcefe2] bg-white p-4 shadow-sm sm:min-h-[520px] sm:p-6">
-          <div className="flex min-h-0 flex-1 items-center justify-center">
-            <img
-              src={sampleImage}
-              alt="Thông tin điều kiện sử dụng chương trình"
-              className="max-h-full w-full object-contain"
-            />
+        {/* Left Column: Usage terms card */}
+        <div className="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#dcefe2] bg-white p-5 shadow-sm sm:min-h-[520px] sm:p-6">
+          <div className="flex flex-1 flex-col justify-center gap-5">
+            <div className="text-center">
+              <span className="inline-flex max-w-full items-center justify-center rounded-full border border-[#137c44] bg-[#148144] px-5 py-2 font-headline text-base font-black uppercase tracking-wide text-white shadow-sm sm:px-7 sm:text-lg">
+                Điều kiện sử dụng
+              </span>
+            </div>
+
+            <ul className="space-y-5 sm:space-y-4">
+              {usageTerms.map((term, index) => (
+                <li key={index} className="flex items-center gap-3 text-left font-sans text-sm font-bold leading-snug text-[#1f6b3a] sm:text-base">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[#f6b73c] drop-shadow-[0_1px_1px_rgba(174,105,0,0.24)]">
+                    <Star className="h-4 w-4 fill-current" />
+                  </span>
+                  <span>{term}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mx-auto mt-1 w-full rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] px-4 pb-4 pt-6 text-center sm:px-5 lg:max-w-[82%]">
+              <div className="relative z-10 mx-auto -mt-10 mb-3 w-fit rounded-full border border-[#137c44] bg-[#148144] px-5 py-2 font-headline text-sm font-black uppercase tracking-wide text-white shadow-sm sm:text-base">
+                Thời hạn sử dụng
+              </div>
+              <p className="font-headline text-xl font-extrabold leading-tight text-[#148144] sm:text-2xl">
+                Đến hết ngày <span className="text-[#c92b2b]">31/08/2026</span>
+              </p>
+            </div>
           </div>
 
           <div className="mt-5 flex items-start gap-3 border-t border-[#dcefe2] pt-5 sm:items-center sm:gap-3.5">
@@ -145,10 +172,10 @@ export default function RegistrationSection({
         </div>
 
         {/* Right Column: Registration submission Form panel */}
-        <div className="relative overflow-hidden rounded-2xl border border-[#bfe4c8] bg-white p-5 shadow-xl shadow-[#148144]/10 sm:p-8">
+        <div className="relative overflow-hidden rounded-2xl border border-[#dcefe2] bg-white p-5 shadow-sm sm:p-8">
           
           {/* Form Banner highlight */}
-          <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#8bc53f] to-[#148144]"></div>
+          <div className="absolute top-0 inset-x-0 h-1.5 border border-[#137c44] bg-[#148144]"></div>
 
           <div className="text-center mb-6">
             <h2 className="font-headline text-xl sm:text-2xl font-bold text-[#148144]">
