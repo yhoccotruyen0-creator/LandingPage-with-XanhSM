@@ -180,8 +180,8 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
     <section id="dia-diem" className="scroll-mt-20 w-full flex flex-col gap-6 sm:gap-8">
       
       {/* Header and description of location locator */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-start gap-2.5 sm:items-center">
+      <div className="flex flex-col items-center gap-2 text-center">
+        <div className="flex items-center justify-center gap-2.5">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#148144] text-white shadow-md shadow-[#148144]/15 sm:rounded-lg">
             <MapPin className="h-4 w-4" />
           </div>
@@ -189,77 +189,49 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
             Hệ thống cơ sở Superbrain đồng hành ({centers.length} cơ sở)
           </h2>
         </div>
-        <p className="font-sans text-sm sm:text-base text-[#2f6f3f] font-medium">
+        <p className="max-w-4xl font-sans text-sm font-medium text-[#2f6f3f] sm:text-base">
           Tìm địa điểm học tập thích hợp gần nhà hoặc vị trí thường di chuyển để tiện việc đưa đón trẻ.
         </p>
       </div>
 
       {/* Area filter block */}
-      <div className="flex flex-col gap-4 rounded-2xl border border-[#dcefe2] bg-[#f6fcf2] px-4 py-4 shadow-sm transition-shadow sm:px-6 sm:py-5 lg:px-8 lg:py-6">
+      <div className="flex flex-col gap-2.5 rounded-2xl border border-[#dcefe2] bg-[#f6fcf2] px-4 py-4 shadow-sm transition-shadow sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         
-        {/* Search header container */}
-        <div className="flex items-center">
-          <h3 className="font-headline text-sm font-bold tracking-wider text-[#148144] uppercase whitespace-nowrap">
+        <div className="grid gap-3 lg:grid-cols-[max-content_minmax(360px,520px)_minmax(420px,1fr)] lg:items-center">
+          <h3 className="font-headline text-sm font-bold uppercase tracking-wider text-[#148144]">
             BỘ LỌC KHU VỰC NHANH
           </h3>
-        </div>
-
-        {/* Tỉnh / Thành phố quick list tabs */}
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] lg:items-end">
-          <div className="flex min-w-0 flex-col gap-2">
-            <div className="flex items-center justify-between gap-3 sm:block">
-              <p className="text-xs font-bold text-[#2f6f3f] uppercase tracking-wider">
-                Tỉnh / Thành phố
-              </p>
-
-              <div className="relative min-w-0 flex-1 sm:hidden">
-                <select
-                  value={selectedProvince}
-                  onChange={(event) => setSelectedProvince(event.target.value)}
-                  className="w-full appearance-none rounded-xl border border-[#9fd7aa] bg-white py-2 pl-3 pr-11 font-sans text-xs font-extrabold text-[#148144] outline-none focus:border-[#148144] focus:ring-1 focus:ring-[#148144]"
-                  aria-label="Chọn tỉnh hoặc thành phố"
-                >
-                  {provinces.map(prov => (
-                    <option key={`prov-option-${prov}`} value={prov}>
-                      {prov} ({provinceCounts[prov] || 0})
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#148144]" />
-              </div>
-            </div>
-            
-            {/* Scrollable container for chips */}
-            <div className="hidden gap-2 overflow-x-auto pb-1 custom-scrollbar sm:flex">
-              {provinces.map(prov => {
-                const count = provinceCounts[prov] || 0;
-                const isSelected = selectedProvince.toLowerCase() === prov.toLowerCase();
-                return (
-                  <button
-                    key={`prov-chip-${prov}`}
-                    onClick={() => setSelectedProvince(prov)}
-                    className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-200 shadow-sm cursor-pointer border ${
-                      isSelected
-                        ? "bg-[#148144] text-white border-[#148144] scale-102"
-                        : "bg-white text-[#185c34] border-[#bfe4c8] hover:border-[#148144]/60 hover:text-[#148144]"
-                    }`}
-                  >
-                    {prov} ({count})
-                  </button>
-                );
-              })}
-            </div>
-          </div>
 
           <div className="relative min-w-0">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#148144] text-sm h-4.5 w-4.5" />
+            <Search className="absolute left-3.5 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-sm text-[#148144]" />
             <input
               type="text"
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#9fd7aa] bg-white text-sm outline-none focus:border-[#148144] focus:ring-1 focus:ring-[#148144] transition-all font-sans font-semibold placeholder:text-[#7fae82]"
+              className="w-full rounded-xl border border-[#9fd7aa] bg-white py-2.5 pl-10 pr-4 font-sans text-sm font-semibold outline-none transition-all placeholder:text-[#7fae82] focus:border-[#148144] focus:ring-1 focus:ring-[#148144]"
               placeholder="Nhập tên cơ sở, quận huyện hoặc tên đường..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+          </div>
+
+          <div className="flex min-w-0 items-center gap-2">
+            <label className="shrink-0 font-headline text-sm font-bold uppercase tracking-wider text-[#148144]">
+              Chọn Tỉnh/Thành phố
+            </label>
+            <div className="relative min-w-0 flex-1">
+              <select
+                value={selectedProvince}
+                onChange={(event) => setSelectedProvince(event.target.value)}
+                className="w-full appearance-none rounded-xl border border-[#9fd7aa] bg-white py-2.5 pl-4 pr-11 font-sans text-sm font-extrabold text-[#148144] outline-none transition-all focus:border-[#148144] focus:ring-1 focus:ring-[#148144]"
+                aria-label="Chọn tỉnh hoặc thành phố"
+              >
+                {provinces.map(prov => (
+                  <option key={`prov-option-${prov}`} value={prov}>
+                    {prov} ({provinceCounts[prov] || 0} cơ sở)
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#148144]" />
+            </div>
           </div>
         </div>
 

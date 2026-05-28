@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, Clock, Play } from 'lucide-react';
 
-const HERO_VIDEO_URL = 'video-demo.mp4';
+const HERO_VIDEO_URL = 'video.mov';
 
 interface HeroProps {
   onRegisterClick: () => void;

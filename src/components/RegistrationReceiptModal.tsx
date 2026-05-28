@@ -42,7 +42,7 @@ export default function RegistrationReceiptModal({ isOpen, onClose, registration
               Đăng Ký Thành Công!
             </h3>
             <p className="text-xs sm:text-sm text-white/90 mt-1 font-semibold">
-              Hệ thống đã nhận thông tin giữ suất ưu tiên của Bác tài!
+              Hệ thống đã nhận thông tin đăng ký của Bác tài!
             </p>
           </div>
 

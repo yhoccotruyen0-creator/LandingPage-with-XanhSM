@@ -13,17 +13,17 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
     {
       id: "pain-card-1",
       icon: tymImage,
-      text: "Mong muốn đem điều tốt nhất dành cho con"
+      text: <>Mong muốn điều tốt&nbsp;đẹp nhất dành cho&nbsp;con</>
     },
     {
       id: "pain-card-2",
       icon: chongMatImage,
-      text: "Con kém tập trung, học trước quên sau, sợ môn Toán?"
+      text: <>Con kém tập trung, học&nbsp;trước quên&nbsp;sau, sợ môn&nbsp;Toán?</>
     },
     {
       id: "pain-card-3",
       icon: otoImage,
-      text: "Ba bận rộn, không có thời gian kèm con học mỗi ngày?"
+      text: <>Ba bận rộn, không có thời&nbsp;gian kèm con&nbsp;học mỗi&nbsp;ngày?</>
     }
   ];
 
@@ -58,7 +58,7 @@ export default function PsychologicalHook(_props: PsychologicalHookProps) {
                 className="h-full w-full object-contain"
               />
             </div>
-            <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f]">
+            <p className="font-sans text-base font-bold leading-relaxed text-[#2f6f3f] [text-wrap:balance]">
               {card.text}
             </p>
           </motion.div>
