@@ -2,7 +2,13 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, Clock, Play } from 'lucide-react';
 
-const HERO_VIDEO_URL = 'video.mov';
+const HERO_VIDEO_URL = import.meta.env.VITE_HERO_VIDEO_URL || '';
+
+function getYouTubeEmbedUrl(url: string) {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([A-Za-z0-9_-]{6,})/);
+  return match ? `https://www.youtube.com/embed/${match[1]}` : '';
+}
+
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -69,16 +75,13 @@ export default function Hero(_props: HeroProps) {
         <div className="relative lg:w-[55%]">
           <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border-[6px] border-white bg-[#dff4e6] shadow-[0_18px_34px_rgba(27,96,52,0.18)] sm:rounded-[2rem] sm:border-[10px] sm:shadow-[0_24px_42px_rgba(27,96,52,0.22)]">
             {HERO_VIDEO_URL ? (
-              <video
-                className="h-full w-full object-cover"
-                controls
-                playsInline
-                preload="metadata"
-                poster=""
-              >
-                <source src={HERO_VIDEO_URL} type="video/mp4" />
-                Trình duyệt của bạn không hỗ trợ video.
-              </video>
+              <iframe
+                className="h-full w-full"
+                src={getYouTubeEmbedUrl(HERO_VIDEO_URL)}
+                title="Video giới thiệu chương trình Mầm Xanh Trí Tuệ"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             ) : (
               <>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,#108848_0_8%,transparent_20%),radial-gradient(circle_at_84%_18%,#e4df48_0_9%,transparent_20%),radial-gradient(circle_at_50%_48%,#8bd234_0_20%,transparent_34%),radial-gradient(circle_at_18%_78%,#ffd45d_0_8%,transparent_19%),linear-gradient(135deg,#e9fff0_0%,#fbfff7_45%,#b6e061_100%)]" />
