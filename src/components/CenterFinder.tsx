@@ -113,14 +113,14 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
     >
       <div className="flex flex-col gap-3">
         
-        {/* Header: Name & Badge */}
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-          <h3 className="font-headline font-bold text-[#123d2a] text-base sm:text-lg group-hover:text-[#148144] transition-colors">
-            {center.name}
-          </h3>
-          <span className="w-fit shrink-0 bg-[#e9f8ed] text-[#148144] text-[10px] font-extrabold px-2.5 py-1 rounded uppercase tracking-widest border border-[#bfe4c8]">
+        {/* Header: Province & Name */}
+        <div className="flex min-w-0 flex-col items-start gap-2">
+          <span className="max-w-full shrink-0 rounded-xl border border-[#bfe4c8] bg-[#e9f8ed] px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#148144] sm:text-xs">
             {center.province}
           </span>
+          <h3 className="w-full font-headline text-base font-bold leading-snug text-[#123d2a] transition-colors group-hover:text-[#148144] sm:text-lg">
+            {center.name}
+          </h3>
         </div>
 
         {/* Meta rows */}
@@ -134,7 +134,7 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
 
           <div className="flex items-center gap-2.5 text-sm font-medium text-[#2f6f3f]">
             <Phone className="h-4 w-4 text-[#148144] shrink-0" />
-            <span className="font-mono text-xs sm:text-sm font-semibold text-[#123d2a]">{center.hotline}</span>
+            <span className="font-sans text-xs font-bold tracking-wide text-[#123d2a] sm:text-sm">{center.hotline}</span>
           </div>
         </div>
 
@@ -182,7 +182,7 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
       {/* Header and description of location locator */}
       <div className="flex flex-col gap-2">
         <div className="flex items-start gap-2.5 sm:items-center">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#148144] text-white shadow-md shadow-[#148144]/15">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#148144] text-white shadow-md shadow-[#148144]/15 sm:rounded-lg">
             <MapPin className="h-4 w-4" />
           </div>
           <h2 className="font-headline text-xl font-bold leading-tight text-[#148144] md:text-2xl">
@@ -195,7 +195,7 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
       </div>
 
       {/* Area filter block */}
-      <div className="rounded-2xl border border-[#bfe4c8] bg-[#f6fcf2] px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6 flex flex-col gap-4">
+      <div className="flex flex-col gap-4 rounded-2xl border border-[#dcefe2] bg-[#f6fcf2] px-4 py-4 shadow-sm transition-shadow sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         
         {/* Search header container */}
         <div className="flex items-center">

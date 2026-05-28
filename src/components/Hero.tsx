@@ -54,7 +54,7 @@ export default function Hero(_props: HeroProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-5 flex w-full max-w-2xl items-center gap-3 rounded-lg bg-[#ffe0e3] px-3 py-3 text-[#6d171c] shadow-sm sm:mt-6 sm:px-4"
+            className="mt-5 flex w-full max-w-2xl items-center gap-3 rounded-xl bg-[#ffe0e3] px-3 py-3 text-[#6d171c] shadow-sm sm:mt-6 sm:px-4"
           >
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-[#c83d55] text-[#c83d55]">
               <Clock className="h-5 w-5" />
