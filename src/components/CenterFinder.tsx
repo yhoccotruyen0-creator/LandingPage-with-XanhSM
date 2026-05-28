@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Search, MapPin, Phone, ArrowRight, ChevronsDown, ChevronsUp, Loader2, AlertCircle, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { Search, MapPin, Phone, ArrowRight, ChevronsDown, ChevronsUp, Loader2, AlertCircle, ChevronLeft, ChevronRight, ChevronDown, MessageCircle } from 'lucide-react';
 import { SuperbrainCenter } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
+
+const FANPAGE_URL = 'https://www.facebook.com/superbrainvietnam';
+
+const getTelHref = (hotline: string) => 'tel:' + hotline.replace(/[^\d+]/g, '');
 
 interface CenterFinderProps {
   centers: SuperbrainCenter[];
@@ -146,30 +150,31 @@ export default function CenterFinder({ centers, isLoading = false, loadError, on
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
         
-        <button
-          onClick={() => handleCall(center.id, center.name, center.hotline)}
-          disabled={dialingId === center.id}
-          className="w-full bg-white text-[#2f6f3f] border border-[#bfe4c8] font-headline font-semibold text-xs py-2 rounded-xl hover:bg-[#f6fcf2] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-        >
-          <Phone className="h-3.5 w-3.5 text-[#2f6f3f]" />
-          {dialingId === center.id ? 'Đang kết nối...' : 'Gọi điện tư vấn'}
-        </button>
+        <div className="grid grid-cols-2 gap-2">
+          <a
+            href={getTelHref(center.hotline)}
+            className="flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-[#bfe4c8] bg-white px-2 py-2 text-center font-headline text-[11px] font-semibold leading-tight text-[#2f6f3f] transition-all hover:bg-[#f6fcf2] sm:text-xs"
+          >
+            <Phone className="h-3.5 w-3.5 shrink-0 text-[#2f6f3f]" />
+            <span>Gọi điện tư vấn</span>
+          </a>
+
+          <a
+            href={FANPAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-[#bfe4c8] bg-white px-2 py-2 text-center font-headline text-[11px] font-semibold leading-tight text-[#2f6f3f] transition-all hover:bg-[#f6fcf2] sm:text-xs"
+          >
+            <MessageCircle className="h-3.5 w-3.5 shrink-0 text-[#2f6f3f]" />
+            <span>Liên hệ fanpage</span>
+          </a>
+        </div>
       </div>
 
     </motion.div>
 
   );
 
-  // Handle dial call simulation
-  const [dialingId, setDialingId] = useState<string | null>(null);
-  const handleCall = (centerId: string, name: string, hotline: string) => {
-    setDialingId(centerId);
-    setTimeout(() => {
-      setDialingId(null);
-      // Fallback virtual reaction
-      alert(`Đang kết nối cuộc gọi tư vấn miễn phí tới ${name} qua tổng đài: ${hotline}\nTổng đài hoạt động từ 8:00 đến 18:00 hằng ngày.`);
-    }, 400);
-  };
 
   return (
     <section id="dia-diem" className="scroll-mt-20 w-full flex flex-col gap-6 sm:gap-8">
