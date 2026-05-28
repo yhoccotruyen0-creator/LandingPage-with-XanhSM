@@ -64,8 +64,9 @@ export default function Footer({ onScrollToSection }: FooterProps) {
             </a>
             <button 
               onClick={() => {
-                const mail = "yhoccotruyen0@gmail.com";
-                alert(`Mọi thông tin phản hồi hoặc thắc mắc Bác tài vui lòng liên hệ qua email:\n${mail} hoặc hỗ trợ Hotline: 1900 636 079.`);
+                const mail = "marketing@superbrain.edu.vn";
+                const phone = "09 118 118 00";
+                alert(`Mọi thông tin phản hồi hoặc thắc mắc Bác tài vui lòng liên hệ qua email:\n${mail} hoặc hỗ trợ Hotline: ${phone}.`);
               }}
               className="hover:text-[#148144] transition-colors cursor-pointer"
             >

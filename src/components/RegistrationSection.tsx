@@ -117,11 +117,11 @@ export default function RegistrationSection({
   };
 
   const usageTerms = [
-    <>Ưu đãi <strong className="font-extrabold text-[#148144]">1.000.000 VNĐ</strong> học phí khóa học Bingo đầu tiên tại các cơ sở đồng hành cùng Superbrain</>,
-    <>Áp dụng cho học viên mới đăng ký <span className="font-extrabold">(chưa từng học tại Superbrain)</span></>,
-    <>Không quy đổi thành tiền mặt và không áp dụng đồng thời với các chương trình ưu đãi khác</>,
-    <>Vui lòng mang theo voucher khi đến đăng ký</>,
-    <>Mỗi voucher chỉ áp dụng cho 01 lần đăng ký của 01 học viên</>
+    <>Ưu đãi <strong className="font-extrabold text-[#148144]">1.000.000 VNĐ</strong> học phí khóa học Bingo đầu tiên tại các cơ&nbsp;sở đồng&nbsp;hành cùng Superbrain.</>,
+    <>Áp dụng cho học viên mới đăng ký <span className="font-extrabold">(chưa&nbsp;từng học tại Superbrain).</span></>,
+    <>Không quy đổi thành tiền&nbsp;mặt và không áp&nbsp;dụng đồng&nbsp;thời với các chương&nbsp;trình ưu&nbsp;đãi khác.</>,
+    <>Vui lòng mang theo voucher khi đến đăng&nbsp;ký.</>,
+    <>Mỗi voucher chỉ áp&nbsp;dụng cho 01 lần đăng&nbsp;ký của 01 học&nbsp;viên.</>
   ];
 
   return (
@@ -137,13 +137,13 @@ export default function RegistrationSection({
               </span>
             </div>
 
-            <ul className="space-y-3.5 sm:space-y-4">
+            <ul className="space-y-5 sm:space-y-4">
               {usageTerms.map((term, index) => (
                 <li key={index} className="flex items-center gap-3 text-left font-sans text-sm font-bold leading-snug text-[#1f6b3a] sm:text-base">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[#f6b73c] drop-shadow-[0_1px_1px_rgba(174,105,0,0.24)]">
                     <Star className="h-4 w-4 fill-current" />
                   </span>
-                  <span className="[text-wrap:balance]">{term}</span>
+                  <span>{term}</span>
                 </li>
               ))}
             </ul>
